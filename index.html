@@ -475,7 +475,7 @@ async function loadAll(){
     sightings = [];
     sightSnap.forEach(s => {
       const r = s.data();
-      sightings.push({ id:s.id, dogId:r.dogId, x:r.x, y:r.y, note:r.note, timestamp:r.createdAt?.toMillis?.() || Date.now() });
+      sightings.push({ id:s.id, dogId:r.dogId, lat:r.lat, lng:r.lng, note:r.note, timestamp:r.createdAt?.toMillis?.() || Date.now() });
     });
   } catch(e){
     sightings = [];
