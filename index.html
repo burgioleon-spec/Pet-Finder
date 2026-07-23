@@ -188,6 +188,7 @@
     v: "weekly"
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -348,6 +349,7 @@ const AU_CENTER = { lat: -25.2744, lng: 133.7751 };
 let AdvancedMarkerElement, PinElement;
 let mainMapInstance, registerMapInstance, reportMapInstance;
 let expandedLocMaps = new Set(); // pet ids whose inline location map is currently open
+let expandedQRCodes = new Set(); // pet ids whose QR code is currently shown
 let locMapInstances = {}, locMapMarkers = {}; // keyed by pet id
 let registerMapMarker, reportMapMarker;
 let mainMapMarkers = [];
@@ -417,6 +419,23 @@ async function writeTagForDog(id){
     showBanner('Tag written for ' + dogs[id].name + '.', 'ok');
   } catch(e){
     showBanner('Write failed or was cancelled: ' + e.message, 'error');
+  }
+}
+
+// Renders a QR code for the given URL directly into a container as an
+// <img> — a backup way to reach the same tag URL for phones where NFC
+// doesn't work or isn't available at all.
+async function renderQRCode(containerId, url, filename){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  try{
+    const dataUrl = await QRCode.toDataURL(url, { width: 180, margin: 1 });
+    const safeName = (filename || 'tag-qr-code').replace(/[^a-z0-9-_]/gi, '-') + '.png';
+    el.innerHTML = `
+      <img src="${dataUrl}" alt="QR code for this tag" width="180" height="180" style="border-radius:8px; border:2px solid var(--line); display:block">
+      <a class="btn small secondary" style="display:inline-block; text-decoration:none; margin-top:8px" href="${dataUrl}" download="${safeName}">Download PNG</a>`;
+  } catch(e){
+    el.innerHTML = '<p class="muted" style="font-size:12px">QR code unavailable right now.</p>';
   }
 }
 
@@ -558,7 +577,14 @@ function renderMyDogs(){
       <div style="flex:1">
         <strong>${d.name}</strong> <span class="id mono">${d.id}</span> <span class="badge ${d.status}">${d.status}</span>
         <div class="muted mono" style="margin-top:2px; font-size:12px">${tagUrlFor(d.id)}</div>
-        ${d.address ? `<div class="muted" style="margin-top:2px">${d.address}</div>` : ''}
+        <div style="margin-top:8px; max-width:220px">
+          <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer" onclick="toggleQRCode('${d.id}')">
+            <span class="muted" style="font-weight:600; font-size:13px">QR code (NFC backup)</span>
+            <span style="font-weight:700; color:var(--pen-deep); flex:0 0 auto; margin-left:8px">${expandedQRCodes.has(d.id) ? '−' : '+'}</span>
+          </div>
+          <div id="qrCodeList-${d.id}" style="margin-top:6px; ${expandedQRCodes.has(d.id) ? '' : 'display:none;'}"></div>
+        </div>
+        ${d.address ? `<div class="muted" style="margin-top:8px">${d.address}</div>` : ''}
         <div class="toggle" style="margin-top:8px">
           <button type="button" class="safe ${d.status==='safe'?'on':''}" onclick="toggleStatus('${d.id}','safe')">Safe at home</button>
           <button type="button" class="lost ${d.status==='lost'?'on':''}" onclick="toggleStatus('${d.id}','lost')">Currently lost</button>
@@ -581,6 +607,13 @@ function renderMyDogs(){
   // Rebuilding the list above just destroyed any previously-open inline
   // maps along with their DOM nodes — recreate the ones that were expanded.
   expandedLocMaps.forEach(id => { if(dogs[id] && dogs[id].status==='lost') initLocMap(id); });
+  expandedQRCodes.forEach(id => { if(dogs[id]) renderQRCode('qrCodeList-' + id, tagUrlFor(id), dogs[id].name + '-' + id + '-tag-qr'); });
+}
+
+function toggleQRCode(id){
+  if(expandedQRCodes.has(id)) expandedQRCodes.delete(id);
+  else expandedQRCodes.add(id);
+  renderMyDogs();
 }
 
 function toggleLocMap(id){
@@ -1376,9 +1409,12 @@ async function registerDog(){
       <p class="muted" style="margin-bottom:6px">This code is what gets programmed onto the physical tag:</p>
       <div class="mono" style="font-size:32px; font-weight:700; letter-spacing:4px; color:var(--pen-deep)">${id}</div>
       <p class="muted" style="margin-top:8px">Tag URL: <span class="mono">${tagUrlFor(id)}</span></p>
-      <button class="btn" onclick="writeTagForDog('${id}')">Write this to an NFC tag</button>
+      <p class="muted" style="margin-top:16px; font-size:12px">QR code — a backup for phones where NFC doesn't work:</p>
+      <div id="qrCode-${id}" style="margin-top:8px; display:flex; flex-direction:column; align-items:center; gap:8px"></div>
+      <button class="btn" style="margin-top:16px" onclick="writeTagForDog('${id}')">Write this to an NFC tag</button>
       <p class="muted" style="margin-top:8px; font-size:11px">Needs Chrome on Android. This writes today's page address — rewrite the tag once this app is on permanent hosting.</p>
     </div>`;
+  if(!wasEditing) renderQRCode('qrCode-' + id, tagUrlFor(id), name + '-' + id + '-tag-qr');
 
   showBanner(name+"'s profile has been saved.", 'ok');
   resetRegisterForm();
@@ -1428,7 +1464,7 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
 Object.assign(window, {
   signInWithGoogle, logout, lookupDog, jumpToReport, writeTagForDog,
   addMixRow, exitMixMode, editDog, registerDog, cancelEdit, submitSighting,
-  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard, toggleLocMap
+  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard, toggleLocMap, toggleQRCode
 });
 
 // ============================================================
