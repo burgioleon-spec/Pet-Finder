@@ -123,7 +123,7 @@
   .empty{ text-align:center; padding:26px 10px; color:var(--ink-soft); font-size:14px; }
 
   .list-row{
-    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
     padding:10px 0; border-bottom:1px solid var(--line);
   }
   .list-row:last-child{ border-bottom:none; }
@@ -347,6 +347,8 @@ import {
 const AU_CENTER = { lat: -25.2744, lng: 133.7751 };
 let AdvancedMarkerElement, PinElement;
 let mainMapInstance, registerMapInstance, reportMapInstance;
+let expandedLocMaps = new Set(); // pet ids whose inline location map is currently open
+let locMapInstances = {}, locMapMarkers = {}; // keyed by pet id
 let registerMapMarker, reportMapMarker;
 let mainMapMarkers = [];
 let mapsReady = false, registerMapReady = false, reportMapReady = false;
@@ -553,7 +555,7 @@ function renderMyDogs(){
   }
   el.innerHTML = mine.map(d => `
     <div class="list-row">
-      <div>
+      <div style="flex:1">
         <strong>${d.name}</strong> <span class="id mono">${d.id}</span> <span class="badge ${d.status}">${d.status}</span>
         <div class="muted mono" style="margin-top:2px; font-size:12px">${tagUrlFor(d.id)}</div>
         ${d.address ? `<div class="muted" style="margin-top:2px">${d.address}</div>` : ''}
@@ -561,12 +563,62 @@ function renderMyDogs(){
           <button type="button" class="safe ${d.status==='safe'?'on':''}" onclick="toggleStatus('${d.id}','safe')">Safe at home</button>
           <button type="button" class="lost ${d.status==='lost'?'on':''}" onclick="toggleStatus('${d.id}','lost')">Currently lost</button>
         </div>
+        ${d.status==='lost' ? `
+        <div style="margin-top:10px; max-width:380px">
+          <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer" onclick="toggleLocMap('${d.id}')">
+            <span class="muted" style="font-weight:600; font-size:13px">Last known location — click the map to set it</span>
+            <span style="font-weight:700; color:var(--pen-deep); flex:0 0 auto; margin-left:8px">${expandedLocMaps.has(d.id) ? '−' : '+'}</span>
+          </div>
+          <div id="locMapBody-${d.id}" class="mapbox" style="margin-top:6px; ${expandedLocMaps.has(d.id) ? '' : 'display:none;'}"></div>
+        </div>` : ''}
       </div>
-      <div>
+      <div style="flex:0 0 auto; display:flex; gap:8px">
         <button class="btn small secondary" onclick="editDog('${d.id}')">Edit</button>
         <button class="btn small danger" onclick="deletePet('${d.id}')">Delete</button>
       </div>
     </div>`).join('');
+
+  // Rebuilding the list above just destroyed any previously-open inline
+  // maps along with their DOM nodes — recreate the ones that were expanded.
+  expandedLocMaps.forEach(id => { if(dogs[id] && dogs[id].status==='lost') initLocMap(id); });
+}
+
+function toggleLocMap(id){
+  if(expandedLocMaps.has(id)) expandedLocMaps.delete(id);
+  else expandedLocMaps.add(id);
+  renderMyDogs();
+}
+
+function initLocMap(id){
+  if(!mapsReady) return;
+  const container = document.getElementById('locMapBody-' + id);
+  const dog = dogs[id];
+  if(!container || !dog) return;
+
+  const map = new google.maps.Map(container, {
+    center: dog.lat!=null ? {lat:dog.lat, lng:dog.lng} : AU_CENTER,
+    zoom: dog.lat!=null ? 16 : 4,
+    mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'hybrid'
+  });
+  locMapInstances[id] = map;
+
+  if(dog.lat!=null && dog.lng!=null){
+    locMapMarkers[id] = new AdvancedMarkerElement({ map, position:{lat:dog.lat,lng:dog.lng}, content: buildPhotoPinContent(dog, '#33475B') });
+  } else {
+    tryGeolocate(map);
+  }
+
+  map.addListener('click', async (e)=>{
+    const lat = e.latLng.lat(), lng = e.latLng.lng();
+    if(locMapMarkers[id]) locMapMarkers[id].map = null;
+    locMapMarkers[id] = new AdvancedMarkerElement({ map, position:{lat,lng}, content: buildPhotoPinContent(dog, '#33475B') });
+    try{
+      await updateDoc(doc(db, 'dogs', id), { lat, lng });
+      dogs[id].lat = lat; dogs[id].lng = lng;
+      showBanner('Last known location updated for ' + dog.name + '.', 'ok');
+      renderMainMapMarkers();
+    } catch(e){ showBanner('Could not save location: ' + e.message, 'error'); }
+  });
 }
 
 async function toggleStatus(id, newStatus){
@@ -581,8 +633,7 @@ async function toggleStatus(id, newStatus){
   } catch(e){ showBanner('Could not update status: ' + e.message, 'error'); return; }
   await loadAll();
   if(newStatus === 'lost'){
-    showBanner(name + ' is now marked lost. Click the map to set their last known location.', 'ok');
-    await editDog(id, true); // the one place the location map opens automatically
+    showBanner(name + ' is now marked lost. Expand "Last known location" below to set it.', 'ok');
   } else {
     showBanner(name + ' is now marked safe.', 'ok');
   }
@@ -1164,7 +1215,7 @@ function cancelEdit(){
   document.getElementById('registerResult').innerHTML='';
 }
 
-async function editDog(id, showLocationMap = false){
+async function editDog(id){
   if(!dogs[id]){
     showBanner('No pet found with that tag code.', 'error');
     return;
@@ -1207,9 +1258,10 @@ async function editDog(id, showLocationMap = false){
   document.getElementById('registerResult').innerHTML='';
   switchView('account');
 
-  // The map only appears when editDog was opened specifically because a
-  // pet was just marked lost (see toggleStatus) — not every time someone
-  // reopens Edit on a pet that happens to already be lost.
+  // Shows whenever the pet is currently lost — a quick inline map also
+  // lives directly on the Your Pets list now, so this isn't the only way
+  // to set a location, just the full-form version of the same thing.
+  const showLocationMap = d.status === 'lost';
   document.getElementById('locationSection').style.display = showLocationMap ? 'block' : 'none';
   if(showLocationMap){
     if(mapsReady && !registerMapReady) setupRegisterMap();
@@ -1376,7 +1428,7 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
 Object.assign(window, {
   signInWithGoogle, logout, lookupDog, jumpToReport, writeTagForDog,
   addMixRow, exitMixMode, editDog, registerDog, cancelEdit, submitSighting,
-  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard
+  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard, toggleLocMap
 });
 
 // ============================================================
