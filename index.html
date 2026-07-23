@@ -189,6 +189,7 @@
   });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -346,6 +347,56 @@ import {
 // Australia-wide default view, used until/unless the browser provides a
 // real location or a pet's own saved coordinates take over.
 const AU_CENTER = { lat: -25.2744, lng: 133.7751 };
+
+// --- Fill these in from your EmailJS dashboard ---
+const EMAILJS_PUBLIC_KEY = "PASTE_YOUR_EMAILJS_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "PASTE_YOUR_SERVICE_ID";
+const EMAILJS_SCAN_TEMPLATE_ID = "PASTE_YOUR_SCAN_TEMPLATE_ID";
+const EMAILJS_FOUND_TEMPLATE_ID = "PASTE_YOUR_FOUND_TEMPLATE_ID";
+if(EMAILJS_PUBLIC_KEY !== 'PASTE_YOUR_EMAILJS_PUBLIC_KEY'){
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
+let notifiedThisSession = new Set(); // dog ids already emailed-for this browser session
+
+// Fired once per dog per session when their profile is actually viewed —
+// covers NFC taps, QR scans, and manually typed codes alike, since all
+// three funnel into the same lookupDog() call.
+async function sendScanNotification(dog){
+  if(!dog.ownerEmail || notifiedThisSession.has(dog.id)) return;
+  notifiedThisSession.add(dog.id);
+  if(EMAILJS_PUBLIC_KEY === 'PASTE_YOUR_EMAILJS_PUBLIC_KEY') return; // not configured yet
+  try{
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_SCAN_TEMPLATE_ID, {
+      to_email: dog.ownerEmail,
+      dog_name: dog.name,
+      scanner_info: currentUser ? currentUser.email : 'Someone not logged in',
+      tag_code: dog.id
+    });
+  } catch(e){ /* silent — a failed notification shouldn't block viewing the profile */ }
+}
+
+async function markAsFound(id){
+  const dog = dogs[id];
+  if(!dog) return;
+  if(!confirm(dog.name + ' has been found? This marks them safe and lets the owner know.')) return;
+  try{
+    await updateDoc(doc(db, 'dogs', id), { status: 'safe' });
+  } catch(e){ showBanner('Could not update: ' + e.message, 'error'); return; }
+  if(dog.ownerEmail && EMAILJS_PUBLIC_KEY !== 'PASTE_YOUR_EMAILJS_PUBLIC_KEY'){
+    try{
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_FOUND_TEMPLATE_ID, {
+        to_email: dog.ownerEmail,
+        dog_name: dog.name,
+        finder_info: currentUser ? currentUser.email : 'Someone not logged in'
+      });
+    } catch(e){ /* status update already succeeded either way */ }
+  }
+  await loadAll();
+  showBanner('Marked ' + dog.name + ' as found — thank you!', 'ok');
+  lookupDog();
+}
+
 let AdvancedMarkerElement, PinElement;
 let mainMapInstance, registerMapInstance, reportMapInstance;
 let expandedLocMaps = new Set(); // pet ids whose inline location map is currently open
@@ -471,7 +522,7 @@ function rowToDog(id, r){
   return {
     id, name: r.name, breed: r.breed, species: r.species || 'dog', contacts: r.contacts || [], address: r.address,
     medicalNotes: r.medicalNotes, status: r.status, photoURL: r.photoURL,
-    lat: r.lat ?? null, lng: r.lng ?? null, ownerId: r.ownerId, createdAt: r.createdAt
+    lat: r.lat ?? null, lng: r.lng ?? null, ownerId: r.ownerId, ownerEmail: r.ownerEmail, createdAt: r.createdAt
   };
 }
 
@@ -905,9 +956,12 @@ function lookupDog(){
         ${dog.medicalNotes ? `<p><strong>Medical notes:</strong> ${dog.medicalNotes}</p>` : ''}
         ${contacts.map(c => `<p><strong>${c.name || 'Contact'}:</strong> <span class="mono">${c.phone}</span></p>`).join('')}
         ${dog.address ? `<p><strong>Address:</strong> ${dog.address}</p>` : ''}
-        ${dog.status==='lost' ? `<button class="btn" onclick="jumpToReport('${dog.id}')">Report a sighting</button>` : ''}
+        ${dog.status==='lost' ? `
+        <button class="btn" onclick="jumpToReport('${dog.id}')">Report a sighting</button>
+        <button class="btn secondary" style="margin-left:8px" onclick="markAsFound('${dog.id}')">Dog has been found — notify owner</button>` : ''}
       </div>
     </div>`;
+  sendScanNotification(dog);
 }
 
 function jumpToReport(id){
@@ -1368,6 +1422,7 @@ async function registerDog(){
     try{
       await updateDoc(doc(db, 'dogs', id), {
         name, species, breed, contacts, address, medicalNotes, status,
+        ownerEmail: currentUser.email,
         lat: newDogLoc ? newDogLoc.lat : (dogs[id].lat ?? null),
         lng: newDogLoc ? newDogLoc.lng : (dogs[id].lng ?? null)
       });
@@ -1380,7 +1435,7 @@ async function registerDog(){
       // accept an upload, so the doc has to exist before the photo does.
       await setDoc(doc(db, 'dogs', id), {
         name, species, breed, contacts, address, medicalNotes, status,
-        ownerId: currentUser.uid, photoURL: null,
+        ownerId: currentUser.uid, ownerEmail: currentUser.email, photoURL: null,
         lat: newDogLoc?newDogLoc.lat:null, lng: newDogLoc?newDogLoc.lng:null,
         createdAt: Date.now()
       });
@@ -1464,7 +1519,7 @@ document.querySelectorAll('nav.tabs button').forEach(b=>{
 Object.assign(window, {
   signInWithGoogle, logout, lookupDog, jumpToReport, writeTagForDog,
   addMixRow, exitMixMode, editDog, registerDog, cancelEdit, submitSighting,
-  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard, toggleLocMap, toggleQRCode
+  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard, toggleLocMap, toggleQRCode, markAsFound
 });
 
 // ============================================================
