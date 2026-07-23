@@ -650,7 +650,7 @@ function tryGeolocate(map){
 
 function setupMainMap(){
   mainMapInstance = new google.maps.Map(document.getElementById('mainMap'), {
-    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'satellite'
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'hybrid'
   });
   tryGeolocate(mainMapInstance);
   renderMainMapMarkers();
@@ -740,7 +740,7 @@ function registerMapPinDog(){
 
 function setupRegisterMap(){
   registerMapInstance = new google.maps.Map(document.getElementById('registerMap'), {
-    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'satellite'
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'hybrid'
   });
   tryGeolocate(registerMapInstance);
   registerMapInstance.addListener('click', (e)=>{
@@ -756,7 +756,7 @@ function setupRegisterMap(){
 
 function setupReportMap(){
   reportMapInstance = new google.maps.Map(document.getElementById('reportMap'), {
-    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'satellite'
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'hybrid'
   });
   tryGeolocate(reportMapInstance);
   reportMapInstance.addListener('click', (e)=>{
