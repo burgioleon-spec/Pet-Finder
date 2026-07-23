@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pet Finder</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABMCAYAAADdq7GlAAAKMWlDQ1BJQ0MgUHJvZmlsZQAAeJydlndUU9kWh8+9N71QkhCKlNBraFICSA29SJEuKjEJEErAkAAiNkRUcERRkaYIMijggKNDkbEiioUBUbHrBBlE1HFwFBuWSWStGd+8ee/Nm98f935rn73P3Wfvfda6AJD8gwXCTFgJgAyhWBTh58WIjYtnYAcBDPAAA2wA4HCzs0IW+EYCmQJ82IxsmRP4F726DiD5+yrTP4zBAP+flLlZIjEAUJiM5/L42VwZF8k4PVecJbdPyZi2NE3OMErOIlmCMlaTc/IsW3z2mWUPOfMyhDwZy3PO4mXw5Nwn4405Er6MkWAZF+cI+LkyviZjg3RJhkDGb+SxGXxONgAoktwu5nNTZGwtY5IoMoIt43kA4EjJX/DSL1jMzxPLD8XOzFouEiSniBkmXFOGjZMTi+HPz03ni8XMMA43jSPiMdiZGVkc4XIAZs/8WRR5bRmyIjvYODk4MG0tbb4o1H9d/JuS93aWXoR/7hlEH/jD9ld+mQ0AsKZltdn6h21pFQBd6wFQu/2HzWAvAIqyvnUOfXEeunxeUsTiLGcrq9zcXEsBn2spL+jv+p8Of0NffM9Svt3v5WF485M4knQxQ143bmZ6pkTEyM7icPkM5p+H+B8H/nUeFhH8JL6IL5RFRMumTCBMlrVbyBOIBZlChkD4n5r4D8P+pNm5lona+BHQllgCpSEaQH4eACgqESAJe2Qr0O99C8ZHA/nNi9GZmJ37z4L+fVe4TP7IFiR/jmNHRDK4ElHO7Jr8WgI0IABFQAPqQBvoAxPABLbAEbgAD+ADAkEoiARxYDHgghSQAUQgFxSAtaAYlIKtYCeoBnWgETSDNnAYdIFj4DQ4By6By2AE3AFSMA6egCnwCsxAEISFyBAVUod0IEPIHLKFWJAb5AMFQxFQHJQIJUNCSAIVQOugUqgcqobqoWboW+godBq6AA1Dt6BRaBL6FXoHIzAJpsFasBFsBbNgTzgIjoQXwcnwMjgfLoK3wJVwA3wQ7oRPw5fgEVgKP4GnEYAQETqiizARFsJGQpF4JAkRIauQEqQCaUDakB6kH7mKSJGnyFsUBkVFMVBMlAvKHxWF4qKWoVahNqOqUQdQnag+1FXUKGoK9RFNRmuizdHO6AB0LDoZnYsuRlegm9Ad6LPoEfQ4+hUGg6FjjDGOGH9MHCYVswKzGbMb0445hRnGjGGmsVisOtYc64oNxXKwYmwxtgp7EHsSewU7jn2DI+J0cLY4X1w8TogrxFXgWnAncFdwE7gZvBLeEO+MD8Xz8MvxZfhGfA9+CD+OnyEoE4wJroRIQiphLaGS0EY4S7hLeEEkEvWITsRwooC4hlhJPEQ8TxwlviVRSGYkNimBJCFtIe0nnSLdIr0gk8lGZA9yPFlM3kJuJp8h3ye/UaAqWCoEKPAUVivUKHQqXFF4pohXNFT0VFysmK9YoXhEcUjxqRJeyUiJrcRRWqVUo3RU6YbStDJV2UY5VDlDebNyi/IF5UcULMWI4kPhUYoo+yhnKGNUhKpPZVO51HXURupZ6jgNQzOmBdBSaaW0b2iDtCkVioqdSrRKnkqNynEVKR2hG9ED6On0Mvph+nX6O1UtVU9Vvuom1TbVK6qv1eaoeajx1UrU2tVG1N6pM9R91NPUt6l3qd/TQGmYaYRr5Grs0Tir8XQObY7LHO6ckjmH59zWhDXNNCM0V2ju0xzQnNbS1vLTytKq0jqj9VSbru2hnaq9Q/uE9qQOVcdNR6CzQ+ekzmOGCsOTkc6oZPQxpnQ1df11Jbr1uoO6M3rGelF6hXrtevf0Cfos/ST9Hfq9+lMGOgYhBgUGrQa3DfGGLMMUw12G/YavjYyNYow2GHUZPTJWMw4wzjduNb5rQjZxN1lm0mByzRRjyjJNM91tetkMNrM3SzGrMRsyh80dzAXmu82HLdAWThZCiwaLG0wS05OZw2xljlrSLYMtCy27LJ9ZGVjFW22z6rf6aG1vnW7daH3HhmITaFNo02Pzq62ZLde2xvbaXPJc37mr53bPfW5nbse322N3055qH2K/wb7X/oODo4PIoc1h0tHAMdGx1vEGi8YKY21mnXdCO3k5rXY65vTW2cFZ7HzY+RcXpkuaS4vLo3nG8/jzGueNueq5clzrXaVuDLdEt71uUnddd457g/sDD30PnkeTx4SnqWeq50HPZ17WXiKvDq/XbGf2SvYpb8Tbz7vEe9CH4hPlU+1z31fPN9m31XfKz95vhd8pf7R/kP82/xsBWgHcgOaAqUDHwJWBfUGkoAVB1UEPgs2CRcE9IXBIYMj2kLvzDecL53eFgtCA0O2h98KMw5aFfR+OCQ8Lrwl/GGETURDRv4C6YMmClgWvIr0iyyLvRJlESaJ6oxWjE6Kbo1/HeMeUx0hjrWJXxl6K04gTxHXHY+Oj45vipxf6LNy5cDzBPqE44foi40V5iy4s1licvvj4EsUlnCVHEtGJMYktie85oZwGzvTSgKW1S6e4bO4u7hOeB28Hb5Lvyi/nTyS5JpUnPUp2Td6ePJninlKR8lTAFlQLnqf6p9alvk4LTduf9ik9Jr09A5eRmHFUSBGmCfsytTPzMoezzLOKs6TLnJftXDYlChI1ZUPZi7K7xTTZz9SAxESyXjKa45ZTk/MmNzr3SJ5ynjBvYLnZ8k3LJ/J9879egVrBXdFboFuwtmB0pefK+lXQqqWrelfrry5aPb7Gb82BtYS1aWt/KLQuLC98uS5mXU+RVtGaorH1futbixWKRcU3NrhsqNuI2ijYOLhp7qaqTR9LeCUXS61LK0rfb+ZuvviVzVeVX33akrRlsMyhbM9WzFbh1uvb3LcdKFcuzy8f2x6yvXMHY0fJjpc7l+y8UGFXUbeLsEuyS1oZXNldZVC1tep9dUr1SI1XTXutZu2m2te7ebuv7PHY01anVVda926vYO/Ner/6zgajhop9mH05+x42Rjf2f836urlJo6m06cN+4X7pgYgDfc2Ozc0tmi1lrXCrpHXyYMLBy994f9Pdxmyrb6e3lx4ChySHHn+b+O31w0GHe4+wjrR9Z/hdbQe1o6QT6lzeOdWV0iXtjusePhp4tLfHpafje8vv9x/TPVZzXOV42QnCiaITn07mn5w+lXXq6enk02O9S3rvnIk9c60vvG/wbNDZ8+d8z53p9+w/ed71/LELzheOXmRd7LrkcKlzwH6g4wf7HzoGHQY7hxyHui87Xe4Znjd84or7ldNXva+euxZw7dLI/JHh61HXb95IuCG9ybv56Fb6ree3c27P3FlzF3235J7SvYr7mvcbfjT9sV3qID0+6j068GDBgztj3LEnP2X/9H686CH5YcWEzkTzI9tHxyZ9Jy8/Xvh4/EnWk5mnxT8r/1z7zOTZd794/DIwFTs1/lz0/NOvm1+ov9j/0u5l73TY9P1XGa9mXpe8UX9z4C3rbf+7mHcTM7nvse8rP5h+6PkY9PHup4xPn34D94Tz+6TMXDkAACGiSURBVHja5XxpdGVXdea39zn3vlFjSapSqQaX7SqXXTY2HmK7PKlMCAkh4BCkTDgQMNAxDU5CVrKSdJYkmpCkE4wDThiaGAiwkqgCDWmMY4NR4SFNiLGDsQrb5ZqrrKpSaXrzu/eevfvHue9J5dkYQ6/Vby0tPT1dvXf3Pnt/+9vf2UeEl/GhqoSdOxn9/bQLuzA8DCGakOf8m8lJ85TrFYC+XPdIL4fRu3aNm+HhcSGiZzT28a+NdUqCkG1IALDQIOnJFipbXntT85mun5oasy/EeT9RB+jYGGN8GxGNutZrR77+0VUNjs9nMpeQDc6DYiMZu4qMWUXgjKoSEaAqwkyL4pJFdckhALtJkocM83+uu/o9j58SUdjJRKPyo4oK+pGEub8p51f3r/uDHL+OCG+gILu92Nnd39HVA5MpgG0GQgaqBBBDVds3QaSACkhiSNxAs17C4sJ8LHHz++qSO8H65Q3bf+s7K1OFRped/RNxgOqkaRm+7+4Pn0XMN3KQ+5Wevv6BbMcqaFAA2awYEzoFQFAWFYJ6xxGgCoCJoQCIGMQkAKmqkCRNS9IEmiXMnZiBi2q7krjxsQ1Xzv4z0YSojjHGAZr44VODfuhVHx8nmpiQA9/6xCBR8kdsw7f1r12fR7YXHOYTZgNxjlsLDECZmHTFR6u3HwQihSoTkfoHQEQAlIgFRJrEDWNdjeqLx1FemHtAXPPP11954xefuhAvuwNWht7+u//6t0wYjvUPbViNbB9MtpBAlVUcAQQQgYjJ20VgTh2gqkiNJVDrLqjtXvV/rRBVSX8AwMY6EQc0S7Y2fxTlxbn/Xa5Fv3fOq9/zuE5OGoyMCtGLw4YX5YCpqTG7Y8dEsvuOmwfz+eAT3b2rfiHoWoug0JtAxaj4QPeGExQMIkIr1on856mPd+8IkI8FtH+v7d+3fOWfQVVAIBBbEUkU9Vk79+SBpXqj/r4zrnn333k8AohIf+QO0KkxSzsmkj1f//DlYWj/sW9w/QbuHEqMsX7FyXhLwKdYQkwAWZDJgE2GlAMQGwUZ6IobUBWQJKQSQ11TVWJAkvQ9jHeaSpo4nhqwCVxcX7LRwmGUFmY/tn6m/z00OupUx/iFlkx6UcbfdfNoNpf5TOeajblc91Cs4gIVUbABEbdW1RtjAlDQAQ6LoCAPNgEAQ758tRZIVtyGh0P/RKAuIUlqKlEFiKtQdQA4vdJXDKiCjFVxsUjpiD15/MmvN0z+TVsuu770Qp1AL9T4R+/80Js7Ogqfy/dt0HzXgKgk7JcXCvIOUIlBNgvO9oGz3YAJwW1DBapEpKKSYp9CNE1/ApESkc8cn/Ht25OkCWksQJpLQOqItvNUQcwQIEb5aHji6IF/a5Sin9vy2ptKOjbGz1ch+PlynnZMJI/d+aFfLBbzf18c2OTyXX0iSdNgOZkBFajE4Fwfwp7NsIXVYGMBiQEkEEngnPNpzSGxyYFNTo0pgE0BbPLKHICIIE4gzqUGJhCJwTaALa6B7doECjsBTVpAARBBRQCRgDrWxf1rN24Pi8Htxx+ZLC7zlGd/2Gf7xeTkiNmxYyJ54q6bLw5zmc8XBzZqtqMHLo6YmH0FY4aKA9kQtnMjmUy3AgkgUTuaRRTMufRdE1QWjqG6eIKatQpUVQ0zssUu5Dp7ke/qA5u8X3WppQFPqTMc2Fpw5wa4Ridc5UkfDWxAEFIRhTrLHUPxwGBy5cyTh76wemLiDVPDsAo4ehbm+IzeGRsb43EAh1+zrts1qw/2DJ62MdczmEgSW8CHKsgo1BEFBdjuM5VtFkDUfltxDmxCABYnDu6mJ757tx574mGqLh5DEtUASQBiNUywJkCQzaPYM0B9G7fppguvRd+GcwmIVCQBs2lBQ+pYC0macOWD0CQC2EDFAyQxkXNJFM/tD48fm/nA5mvf8yfPxRPouWr9Y3d9aHJwaN1I0LMuhoj1IAcQG1J1yplOBD1byfMb16bnzjkYU0Bl4Ri+/eVP4MDD34K4CJkwSzYMYG2gzD7vTbtiCCAJJUmk1obYeMG1OO81NyDM5yEuAhuzfMuiAFtAEsSL+6ESQdNyClUiYyRuVFz5yceDerV57abhd009G3WmZzX+zg/9Sk9v1z/kBzbFbEILz13SDxJwpgNh37b0r1zK40T9yhcws/d7+ManJ1AvzSLf0QVjDAyUfPlKg5tImQjMBCYCGyZmViIgqi6he2gLfupXx5EpFOEjgZcrhgBgC3EJ3NJeSBIBxGACRARsA4lKx/nEocf35rqKF6w5f28dGNencgR+KsUdn57WvV//RBcz/1XY0Sc2zLKKS6kIQBAlm0HYe3Z6M65FZtvGH9v3MO74+O/DNcvo6F4FQwBDwAwYw7BMCCzDGoJNvxtDMAwwKQwTOlatQW12H6bvuBWASXFhWRqQFFPYWJjO01LuoVAFgQiSxBwU+5P+NYNnVucX/5hoQrBzJz9PFdjJExMTIlR5X9/qgaEg3+0kjth/qLYqMAU9ZwEcAEjaKyLic74y/yS+cdsYiARhNgdIQsYQrGEYbhnqb9a0X+P2c2sMmARJbQ7ZQicWD/4n5g88COaMr/0AIApmbQMr2xxMcQgqzrcY6Xoyk6F8nwvC7G8fvPdvT8fIqG+gnskBvjcfdU/c+ZcDBHoPZTqFmVlVUqcTIAlsxwZw2JUCHi235epr972Tt6BRmUcmk/epYpbD3BgDUod8V68WelcrJIExBszeAdYaEDlkO1bhtEt/CbnufhASLBx+BICBagJxDiIOLvFf4gSQCDbXq5zrgUrcolrkkoSCXJesWj2YS5L49z3H2EbPHAG7xg0ACPFvrurv7w5yReeSmEFprdUEnOmC6Vy3wvgUAVwCNjk89u07cHj3vyHf0Q2Cg2GGZSZjmPzqEpiAMJvH0NaLAYk9NqRRYawFkiYGz74CZ17zVqw971owAZWZH6BZPgZjuzxvsEUYW4SxBV82WSGIyRQGQRwQIGk/oICKQaZbjM38+qFvfGyIaNSNjS1HgW2D4fC4e+CBtYHOL72Vw4ISMasmqY98+NvOjanHlnFERGBMBrXSCfzHV/8OuUIn2JcjD25MatgbyMygwCJpVNC79nQE2SKIBMxMTKlzckXM7f13sLE0f+ABzXX0IiqfwO4vvx9da7ci270GJsyhUoNGsdCqtadh4PRzwBIrTIY4169J+TCIQ39/LiGbLSSr+vuLM0cOvRnAX4wPgycmPIzYlPQwEbkn7vwfPxXm81sR5MS3tGloq4PJ9cJkewDEemr1IAAB7v3Hm9GoLqDY2Q1SgaGW0cvGMwOA1SSqI5MvUrG3X+uLx8E2q0wAM4jIIqkv4snvfkmDTB42DGCYASQoH3kIzRMWM0/O4dFHj0DVoaN3DX55/HPI5AskEoNzq0DV41BJiIihKjBkiLOdIDK/rGNjf4nhcQdMLKdAf/85BABO9fWdXd0IMhknLqFUp/JvUhgEwBBRanWo4hyYc3jwzs9i/8P3Ua7YBahrrXzb+HY0EMNaQ3ARVJ0We9cA4lOFmVqKEEwQIlvshg1CmBZ+2ABhrgOZQhcyhS4Nsh0odq/yfYAkAIxCBcwBONsLlcQvjyrExayc0TCbO2/PVb1bvRTh04ABYHh43EFBAuyAzQCqHvlVCSq+wcn1AIhbrUvaBGYxd/RxfPdfP4dcR5equHb/T6kmQNRafQIbj/gEgSQRch3dICjYEIg5xQKGab0HE9gwOK0QzIC4BAP9ndRRzKK0WEK22ItMvstXJPK0mbM96XOfqiqCIJNNunu6LUGv9ZjnbeexsTEmIt39rx9Yw8RnKweAyHKIawLOdPsyJLKyg/ftKfkVNjZMBYvlK6hNcuCdkDrEBgFsmAGzSVc+JUKttDGtqkGp8dx+DQCCwOKVF22mLWeuwQXbLwdzBi5xxExQdURhDmSyaQsNqAqBmGymAAJfBQAY3qYAwOPbfFkgmLNyuVzR2MCpOCKk6pUIONN1St3wHShDpI7etZux9owLEDfr2Hj2pWjUyqBWSENbjA9EaL9mwyxyHb2I6mWwMWiVSUq/DLd4Aa/AD06d4tXkfCGLV7xiE9ad9YqWr9vRCRhQUARkmZ5DhGAyIGO26dhYW8Vm9E97mUpoc76QBxsrqgqF+PBnA850eMbHAEvrQ9AmIleOvBcucSBrcMFPj6K6OI8kanrUZwNi9k4xFnGjrL0bzobNd6By8ghsEIIIxKnh7XRJw98G1lNnamEEe6cxwZk8bO8WD8zEKU1K1aIwr544aUukISUDYt5w4JLCQKvpY2AYAGAMrQ/CMBXtBF6xE4ADkMm0yae06KaXsUlchM7+9bjutz9Ch6YfQrG7D69+xx+jc2AdmvUqGtUlxPUKkkYVjfI8OgY20Vmv+nXM7nmI6gvHYMMsiKDcclILNNN0adYjBIFBJhMizATIhAHCbBZxrYT84CsQ5PogEj+lr1GQCaEr5DMVR2AWGwQdmjOrAWDbtt1kgV0toBggNis4f+oIDkBsT5GvVkYAGwOXVNC34Wxcdt0N+OZn348r3ngDrrn+d1E9OYO5I3vQrCzAGIuewU1Yfc5lKM0coCfu+yKCTNazQEbb6OVqwGSM0dn5BcweW0CxI48wE0DBaNYqKPaswvotPwMghk/HFPCUiElV2aZizTKNZzaazWVRqiz2AcDIyAjsrhabEyl6syRVeIhUBSD2PbhoWjOWaYB3RNqIqqC2dBL5QgHfv3snDj98LzadfzkGNm1FttBFRKxRo4q9930FM7vvB5OqsQGSRhkUhgiy+RXVY1nZHdq4BrVKA7VaE41GAkaMnr4ebHzVuz0vkTqQEi4RpNClAJm2WtXGAYIaYyDicgCwa9c0tRUhcUKqrXxREGNZsgMAXja83Rmv4EJErAsz+0DMyHd0oVFZxO57voI9/+d2hNkcjDGAi0AQhLmiMhOpQgfPfzWipRlUju2BzRc9WNJydXFRHcUCo7OjADIGuf4z0Ln1DbDFodR4bilPbUl8JRYAAhB5dZ1SGY+YniaJEVNdVdK9GvUr7nNnObUEYH6K5i4AmwBJVMbckSdgwwzEJTDWwmaz4HRboIX+LRBzzZqedvkbMXTR6wHXwP6p21A5+n2YXId3KDMgCfJrz0OQ7wEHWWT7zkB+4CxPyFwtFUl0uSnjlTAggDqoEijdf1EViDhApW2DHW6vMM2rOK+zqddsAUBdE+oSwBjfdIgSr/ggUQUjxMmD30N14RgKnZ2kvox4sdKQErFXjX0UqkqCTLEbA5svRjy/FyoxNl51PZ6440OQxhJMkIe6CGHPBgxe/s6ndO0NL5QSP13Tkdal5BdOBdTuZQgqjuIohpKUAGB4dpvyipZuJokjSJozre0tTZrQpLl8E7xSQEFbazz48L2+CwNpuyb7kCTCyp+Z1CUo9q1DkO9Cc+5xVPd/C4SEBi98PRQKNgYqCXVtuhwAw8VLEFeFSM3fAvMz3MfySwz2CydJWgV9YyhJzI1GQ0A0CwAYmVZugSAp72s2GhDnmyBtKS8uhsQ1//aiy8XA82xlE6BROYm9D05pmCukqLtiSxRoFc02NYYKigObAAgkqoE0RvXwd7Rj/fkorNkC5wRkcygfewxxbR4m6AKbIFWJT9Gw/NtT60NbqUuQZoVUBD6tBQRVSEKSxAvZSI/568fVDg97kxzFj5VL1STb1TRhJufBMN2BcbU5oLj22bZOwEzYdtVr6cG7/kFtdw8ZG2rbEal+3w4D+K2uYv8GQtJUF9WQ6T8HsAWoizB06a/BxREA0trJA5idvh0204FVW6+FCbOejqf7IkqngrEwtdt1aZZSicy1dpCEJGJ1bt/G1/3hgheASBl+BgdZ27s/jqMj6qJ0N9eXQyKCq81CkHgmmIKgiAM4i5NH9uJfbrkJZ154Ja751fciSZw2ykve68S+jLbLpodhmy0i1zWg4hLk1l6E/PrtyA+e72WyTBFhZx/Czn50n34l1l40irCrHyceuX1ZfsNK2rsSkH1/IkkTEpX8Z6cLqRCVuAER9z1fAr0AxATo5OSk2fLam5pQ/Q/ETW2Jb37zluEaC5D6Ylo0NG2KDFzcwP07/xpLJw/h9o+Na5jN4ef/63/H6RcPQwHUyoto1spI4gaciyEuQdysEQdZZLJFgCyyPesBFwEuhoI9f09iwCUQVwWY0L3xCkAdKsceBTgHJInHqhUiKXNrz9HANZYgcb3NA5hIXRJTo1aBQKeetjPUn/YDzPS1Zr06YosRmG17+0ldhLh0FDbXB3GRv9ZkcO8//QVOHvoBit19kKRJuz7/YT3jgu04e/vP4OzLX425o/uwOLMfjcVZJFEdQeC3Fno3bCNYCySxQpzX+KmVJnRKZSvNPI5C3yZ0b7ocs9N3IuxYg7DQ73sTiVYgf+ubgasea+0ReFAlQtyo2aWFxQpYd/kI8IFEy4Io6SNfHVujwo8PDG3syBW7RJwjYl9SOMijsOlVUHUwtoCH7vwMvnvHbch39oLgYI0hZlKJ6mSM1dWbzsLQlvPRvWYjZQudasMsVEEqDmQCtdkiqUKZDZQM+Y7IAGAVFbAtUPn4Xn3gc+/D1tfciMHzXofq7KNYOvgAgnwfCqs3I79qfRsIRQTMBpLEqB26D1CPTSIKG4ZJY+mEnTl88K5zXvuHP7ty59i22NPk5KQ593Wjx773pbFvIK5fB3Q6hVpSTytdYwnR0iFke7dg+p4v4j++dhvynd2k4tSYdMtIFZl8URmKk4cew/zhx5A0qrr5sp+ljRdco9/7l4/BGOiq0y/AlmuvhzbrgBqfy8vzUr7GS6T5ntXYfO0N6Bw8C5AGCv1noNB/Osozu7Hnrg+j57RLsOHyN/tIUAVgkZQOQJMG2GZVRYiINGrW0ayWCNB/SFe/vb3crqb909MplXSfqpRK1KxXiVujHeqFEK0cxvQ9X9T7v/RRePlLNe35tSWMqwgUijBbgA1CbLroWpx1xS9ooWsVBs++FM3KPGyQ9UxrRaMCWlnaAFVHxgZYd+EbUeg73Vdh1wQkQcfgBeg76xqUZ36AuL6QphDDJQ3ESwdAbCHiSFVAzNqsluzCwuLJZrP5Fa+ATbinyeI7JiYSVaXzus1dlUp1ulkpGWZyaTupYAONy5j5wd0gY714geVRlhUClCfd6kBEevqFr0KQ8Zsamy5+NcJCT7sotLlGu2Jq6nD1LTiHSBqziMrHEFXml+cFXBlDF46ga+hsiIvSUhwiXtgHiartzAYAl8SiUYXEuc+/8hcnFqemxuwp3exKRNy1a9zQjomESW6J6xWq16q+0IoQVOGiGBdsv5ryxQ64OFnBiFquILRJNHnq2ajMA2EOnMmjUV2Ci5ueIqcTHt5hSm06l7qzMX9Yl/Z/B9Vjj6N2Yg8aC0fT6uO1yMbSISSNMjL5VV6WaSwimt8LYptutDqwMVorL5mF+YW6a0QfBUAt3vOMDhjeMeFUlbri6hcWFkv76qUFQ0SiKT1Okgj5XIhXXHoZ4jiitKmi5bWHp8JpL8Js8Oh9X8HxRx/A3MEf4LFdk3BJRC5uAuK01UsQUq6alt24UYGL6mRzXb6xynYg27s+HRxhAAGOPvDP6Bg6F+CM7xCOPwJostwIAZTEkaBZ5iSOv/CKN03s08nJp43N8FO2inXX+LjZMPrhOoD3J/UqVStLypwKgcRo1Oo4Y8sWbNi8RevVGhFxi2qnBFpJ0zkhsEWjvICH7/gMvvfV/4ny7BGQCTVq1vwI4Eq22MIDSRDkOkE2RNJYQmHgDHQMbUOYK4JtCDjG3m/eApvtxKozrwLg0Jzbh6T8JMDWY5AIjLVSK83Twvx83Qo+qArC9LQ+74jMjokJpzrGS4/YLyyWKg/VlxZsOpjTZnNJ1MBF26+gYnc3kjgCrSCkespus4DYwoQ5mDDrDfC42a717BvHU0m+RLCZPLpOuxBhR4/vRThEszyP3V/9UxCH2HjFWwAIktpJNI4/DDJBmiIgNoxGoyrSKJs4SW7d+oY/2Y+dk884L/RMM0K6c+du2jExkTDr++qVMhZOzoLZ77IACpcklM0E+KnhYRUFxM82QlqRvNymQFRJxG9o+sZEYYIswF5FEihIRVdiAgCEhS4gieCiBjgooHJiHx69/c/RuXYrTh9+BwDfpNUO/zugK2V8BRFLZX7WLCwszXSIfHBsbIwxMiIveEhqdHSn08lJ88o3/dlUrd78x6RWso1GzbU6OSLSZqOhq9esofMv3456vd4egJRUUWoVj6e2h6qqPUOb20OS7V97vp6CowAuVojAGItmaRZPfPPjWHPuT2PdJb8GSWqAANVD34ZrLoHYKlS9hG9IS4tz6hoVVpf8waZfnFgc37aNnm140jzr+NQ559Dw8DCd1V29P3L6m+JcrtDZ6StCKxXiGAODaxHFCY4fOUJhJtOeen3q7hCxgSYRZbsGsPmK60Ai1B6QbutqK5pGEEQdKMjj+PTdiOtlbLrqbZB4ERxkUTn0AOKlw2CbS53nBVXnElebP24Xl8p3n//G9//e5OSkOfc5psqfdUxuYmJCxrdto4uvv2UmiZM/kKjGSydPOi9WSHsXqFmr4vxLLsH6MzdrvVZDi9adgm9pjY/jBJuvuI5smPGC6woAlBUcQFpRIM6PysXNNMfrYJNB9fBDaM7tAdvscjlVUSLSpZPHqVKu1EKV31IFjTwD8L3gOUEaHXU6OWku/fW//FSpXL+rUV4MGvW6a1UFVSWFImk2cfGVV9Lq9RtQr9VS+UuhK2ZCG9Uytl71S+jbtA2uUVtmDcsDHW3WyelGBlQILkamsx+NpZMQl6A28wjqx6dBNtvGpJTxUWlxXjSqmWbU+G/b3vSBPc8GfC/YAQCA6WlVVUrq1XdWq/Wl+WMzJMsifNodO0gS45Krrkb/2iEsR4Jf+Xq1jC3bX48Nr7warl4BiBWtsXisWPEW7VYHUufBJKqjo289nCjmHtuF+vHdIL+Bi1beExFFjbprlubtUqmy68KRP7tFddLQ6Ojzjso+rwNowg8XXXHD3x5sRvWbNG6Yk8ePOWaGaAv//Wgc1OGSq6+hgXXrUa81IM6hWath2zVvwuZLXw1XK3mPqEuRW1L6m4a7+j5fvIxFUIFzMTKFbgydeR5QO+F5f3t6PBU7RGRxdoaqlWoJrv42AhTj0y/osNXzR0CaClNjY3b7Wz7y2Uqt+U9JvRKUFhedMYZapQ2AOuegLsGFV1yJdWecASeEi3/+N3DmxdcgrlfAQRZsQyITpFEggAiYGGxDkAnToWpAxWlLfC4feRCZDIHD/Iq9Pi/ZMzMWTp5wGjdN1Gi+94LRD+2fGhuzL/QUyQsfl1clYJz+/fPzRebwwWw2d8bAunXOBgG3ZHZNb47II7jjDgxuvRQuiuBcgrhyklxUB4d5zXQOIAjyABHiRhnN8izERWQzRc10roEJs0iiOkqHH0JSm/dTpylu+JFrJWstVUuluF6aDxaXKl+45Ff/4s2tMw0vy4GJyckRMzq6093zdzdeWsgV7g1zOVqzYSOrSmuWZLmrgwLiYIurERa6qXJ8jyJpkkoCEacmzKOw5hxAHarHfgBJmiA2BDJqc90oDp6N+uwTSBolcCvnWwcx1EvjUdyUheMzpllv7Gk2Kxdf+ubeyjMNQz7Xw7wYB+zcuVunpsbs8Bv/6vBbXnfRfDawr6vV6klnVxfLimHKNkASq2uWKCqfaA/F20IvgkIvpFmh5uJRxOXjMEEOQecasAnIH5JwaC49CUjiyx9OHUvyzFt1duYookYjjqq111z2lo8c3LZtgM89d/RFHaD6oQ5NtcLs3/7+pr8v5nLX57p64t6+/iCJI22fj0nLYGtbRJImimvPpeKgn8yIm1UsPnEPTLYTXZsugzEBFEqlg9/V+tw+T5e1RXHolDs1xuLEk08mEteDUqnytst/48OfnhobszsmXnjov8RTY6CdO0e4fzofZE7vuS+fzV7Us3p1UugomiRJsLLCEwB1MTjXjf5zfprgEhVVcJBB0qyCOIQJAkiSgIOQxDk9+cjXAIlXbKe1zxjBBgHNnTgRu3olWCxVPnLZ9Tff9GLz/kVXgad5jaAj0+fojonPNupx6ZeacTQ7OzNjm42G+Mqgy8Qm7QpNptjer2diIG7CmhCGASQxmMg7io2/Nm1w2hNJojDWYnF+IYmqpaBUrn3z0idu/h2dnDQrJa4fiwNa/EAnR8yrbrjtYKNReZMkSXzs8GF1iQgxLVNggIgNXL3klaDW9BZxu3sEkRdGiODiBlyznG6oeEAVVRhrUK1UXGlu1tbrzX2Nublfwbjq+PS0vtijcj8SB3h+sNNNTY3Za2745D21Wu2/sDg7c/iQe8pxMCX2w4+N+UOADSEiT09AdYDNoj67D9Kswgstvt4bY9Bs1OXkzFF2SVKulJeuu/qmT8/u3DnKExMv7UD1S3IAAOzYMZFMTY3Z4Xd9/LZKvfFBliQ4dvRobNisAEMFGYvy4f9EXJknDjJtpbk1xsZhHo2TB1Cd+T44yKw4GmcQR5EeO3RYxTmq1Wq/PPyuT35/amzMjo7ufMlnh1+yA1InuKmxMXvV2//mjyu1+mcRNcJjR48mxtq20kvEgCZY2Hs/4toiwWYAcRAVUJBFfe4QFvfen17nQ5/JQJzTJw8eEMuwtWr1XVe9/dY7pqZ+OMR/yTzguR6f2fUt3bZtxJS/8ul/yZ120UUM2RpFSdzR1WlaHIGISSXW2slDMNlOhPkekLGoHn8CS/u/DWMtgYw33jBEHI4eOOgC1qBUqf7J1W//m1teCuK/bBHQqgzT0+foyKTKke8fG6k3o/sb5aXwxMyxxAa23ekRGYImWNhzDyrH96B09BEsHfgO+R6AW60tRARH9h9IApagUq3ffNXbbv3Aj9r4H8n/D3gaR0gPK/6vsTd0r9608euZILg419EV9w+uti5JWvvkCgWJixVE7QYIADGzOhEc3n8gyRoNlsq1T1319lvfMTU2ZocnJp71+Nv/Mw5Y6YQvffC6VWvWbrg9EwSXhoWOeHBoTZAkAgXSMRpGa3JLVWGtoThO9PCBg0nOIqjWardd/tZb3z45OWJGRnbKSyl3P1YHrHTC18Z+trP7tC1fzmaCHRxm48H1Q4FqOoCR6oGqAmsDNBsNHDlw0GUDtrVG42+3v/Wj7345jX9ZHbDSCZO/c1lu3fmX7Mxnwp+PlOOhDetNmMlwnCRKIASBRWmpJDOHDyOfsabebP7p9rfe+t/8TP+EvlzGv+wOaA0kT0xMyBjAr7nt3R/PZjPvqDedrB4a1M6eboYCcydOJHMnTgaBZcRR871X3vCxj+rkiMHoTqGX8V/o/FgcsPIAMxHpPZ985+8GYfavRJQKXZ2RS4SSRi0QxWxcq77t6hs/9dUftrP7iZbB5y6RpCDC5OSkufqdn7y5Xqv9HBOOSqMeImkGLknuLs3OXfrjNv4n8pgaG7MA8NWxkTX3f+rGz973qRv/aKXihP8fHs9k6MqzfD/Ox/8F+5+Xwne6VroAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EC; --paper-deep:#F0E8D4; --ink:#2B2620; --ink-soft:#786F5E;
+    --line:#D9CFB8; --marigold:#E8A33D; --marigold-ink:#7A4A0F; --marigold-bg:#FBEAD0;
+    --forest:#4C7A55; --forest-ink:#22402A; --forest-bg:#E1EEDF;
+    --pen:#33475B; --pen-deep:#1F2E3D; --red:#B5482F;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.5;
+  }
+  h1,h2,h3,.display{ font-family:'Kalam', cursive; font-weight:700; margin:0; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  .wrap{ max-width:760px; margin:0 auto; padding:20px 16px 60px; }
+
+  header.top{ text-align:center; padding:28px 16px 10px; }
+  header.top h1{ font-size:34px; color:var(--pen-deep); letter-spacing:0.5px; }
+  header.top p{ margin:6px 0 0; color:var(--ink-soft); font-size:14px; }
+
+  nav.tabs{
+    display:flex; gap:6px; justify-content:center; flex-wrap:wrap;
+    margin:18px 0 22px; border-bottom:2px solid var(--line); padding-bottom:0;
+  }
+  nav.tabs button{
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:13px;
+    background:none; border:none; cursor:pointer; color:var(--ink-soft);
+    padding:10px 14px; border-radius:8px 8px 0 0; position:relative; top:2px;
+  }
+  nav.tabs button.active{
+    color:var(--pen-deep); background:var(--paper-deep);
+    border:2px solid var(--line); border-bottom:2px solid var(--paper-deep);
+  }
+
+  .view{ display:none; }
+  .view.active{ display:block; }
+
+  .card{
+    background:var(--paper-deep); border:2px dashed var(--line);
+    border-radius:var(--radius); padding:18px; margin-bottom:16px;
+  }
+  .card h2{ font-size:20px; color:var(--pen-deep); margin-bottom:4px;}
+  .muted{ color:var(--ink-soft); font-size:13px; }
+
+  label{ display:block; font-size:13px; font-weight:600; margin:12px 0 4px; color:var(--pen-deep); }
+  input[type=text], input[type=tel], input[type=password], textarea, select{
+    width:100%; padding:10px 11px; border:2px solid var(--line); border-radius:8px;
+    font-family:'Work Sans',sans-serif; font-size:16px; background:#fff; color:var(--ink);
+  }
+  textarea{ resize:vertical; min-height:60px; }
+  .row{ display:flex; gap:12px; }
+  .row > *{ flex:1; }
+
+  .btn{
+    display:inline-block; margin-top:14px; padding:10px 18px; border-radius:8px;
+    border:none; font-family:'Work Sans',sans-serif; font-weight:600; font-size:14px;
+    cursor:pointer; background:var(--pen); color:#fff;
+  }
+  .btn:hover{ background:var(--pen-deep); }
+  .btn.secondary{ background:transparent; color:var(--pen); border:2px solid var(--pen); }
+  .btn.danger{ background:transparent; color:var(--red); border:2px solid var(--red); }
+  .btn.small{ padding:6px 12px; font-size:12px; margin-top:0; }
+
+  .badge{
+    display:inline-block; padding:3px 10px; border-radius:100px; font-size:11px;
+    font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+  }
+  .badge.lost{ background:var(--marigold-bg); color:var(--marigold-ink); }
+  .badge.safe{ background:var(--forest-bg); color:var(--forest-ink); }
+
+  .toggle{ display:inline-flex; border:2px solid var(--line); border-radius:100px; overflow:hidden; }
+  .toggle button{
+    border:none; background:#fff; padding:7px 14px; font-size:12px; font-weight:600;
+    cursor:pointer; color:var(--ink-soft); font-family:'Work Sans',sans-serif;
+  }
+  .toggle button.on{ background:#4A4642; color:#fff; }
+  .toggle button.on.lost{ background:var(--red); color:#fff; }
+  .toggle button.on.safe{ background:var(--forest); color:#fff; }
+
+  /* flyer-style pet profile card */
+  .flyer{
+    background:#fff; border:2px solid var(--ink); border-radius:12px; overflow:hidden;
+    margin-top:14px;
+  }
+  .flyer-top{ padding:20px; }
+  .flyer-avatar{
+    width:64px; height:64px; border-radius:50%; display:flex; align-items:center;
+    justify-content:center; font-family:'Kalam',cursive; font-size:26px; color:#fff;
+    float:left; margin-right:14px;
+  }
+  .flyer-name{ font-size:24px; }
+  .flyer-breed{ color:var(--ink-soft); font-size:13px; margin-top:2px; }
+  .flyer-body{ clear:both; padding:0 20px 16px; font-size:14px; }
+  .flyer-tabs{
+    display:flex; border-top:2px dashed var(--line); background:var(--paper-deep);
+  }
+  .flyer-tabs div{
+    flex:1; text-align:center; padding:10px 4px; font-size:11px; border-right:2px dashed var(--line);
+  }
+  .flyer-tabs div:last-child{ border-right:none; }
+  .flyer-tabs .num{ font-family:'JetBrains Mono',monospace; font-weight:700; display:block; color:var(--pen-deep); }
+
+  /* map */
+  .mapbox{
+    position:relative; width:100%; aspect-ratio:16/10; background:#C9BC9E;
+    border-radius:var(--radius); border:2px solid var(--line); overflow:hidden;
+  }
+  .legend{ display:flex; gap:16px; margin-top:8px; font-size:12px; color:var(--ink-soft); }
+  .legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .dot.lost{ background:var(--marigold); } .dot.sighting{ background:var(--pen); }
+
+  .empty{ text-align:center; padding:26px 10px; color:var(--ink-soft); font-size:14px; }
+
+  .list-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:10px 0; border-bottom:1px solid var(--line);
+  }
+  .list-row:last-child{ border-bottom:none; }
+  .list-row .id{ color:var(--ink-soft); }
+
+  .banner{ padding:10px 14px; border-radius:8px; font-size:13px; margin-bottom:14px; }
+  .banner.error{ background:#FBE4DF; color:var(--red); }
+  .banner.ok{ background:var(--forest-bg); color:var(--forest-ink); }
+
+  .breed-dropdown{
+    display:none; position:absolute; left:0; right:0; top:calc(100% + 4px);
+    background:#fff; border:2px solid var(--line); border-radius:8px;
+    max-height:220px; overflow-y:auto; z-index:20;
+    box-shadow:0 6px 16px rgba(43,38,32,0.12);
+  }
+  .breed-dropdown.open{ display:block; }
+  .breed-option{
+    padding:11px 14px; font-size:14px; cursor:pointer; border-bottom:1px solid var(--line);
+  }
+  .breed-option:last-child{ border-bottom:none; }
+  .breed-option:hover, .breed-option.active{ background:var(--paper-deep); }
+  .breed-option.special{ font-weight:600; color:var(--pen-deep); }
+  .breed-empty{ padding:11px 14px; font-size:13px; color:var(--ink-soft); }
+
+  .contact-phone-input.invalid{
+    background:#FBE4DF; border-color:var(--red);
+  }
+  .contact-phone-input.valid{
+    background:var(--forest-bg); border-color:var(--forest);
+  }
+  .field-missing{
+    background:#FBE4DF !important; border-color:var(--red) !important;
+  }
+  .phone-error{
+    display:none; color:var(--red); font-size:12px; margin-top:4px;
+  }
+  .phone-error.show{ display:block; }
+
+  @media (max-width: 480px){
+    header.top h1{ font-size:28px; }
+    .wrap{ padding:16px 12px 50px; }
+    nav.tabs{ gap:2px; }
+    nav.tabs button{ font-size:12px; padding:9px 8px; }
+    .list-row{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .list-row > div:last-child{ display:flex; gap:8px; flex-wrap:wrap; }
+    .flyer-tabs{ flex-direction:column; }
+    .flyer-tabs div{ border-right:none; border-bottom:2px dashed var(--line); }
+    .flyer-tabs div:last-child{ border-bottom:none; }
+    .btn.small{ padding:8px 12px; }
+    .contact-row, .mix-row{ flex-direction:column; }
+    .contact-row button, .mix-row button{ width:100%; }
+  }
+  #addressAutocompleteContainer gmp-place-autocomplete{
+    width:100%; --gmp-mat-color-surface:#fff; --gmp-mat-color-on-surface:var(--ink);
+  }
+</style>
+<script>
+  // Google Maps bootstrap loader (Google's official snippet) — defines
+  // google.maps.importLibrary, used later to load the Places library.
+  ((g)=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+    key: "AIzaSyA3Xj1aDqleWmvBlnFMDdrhim6_M5U7iq4",
+    v: "weekly"
+  });
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <img src="data:image/png;base64,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" alt="Pet Finder logo" style="height:52px; display:block; margin:0 auto 6px">
+    <h1>Pet Finder</h1>
+    <p>Scan the tag. Find the way home.</p>
+  </header>
+
+  <nav class="tabs">
+    <button data-view="map" class="active">Map</button>
+    <button data-view="find">Find a pet</button>
+    <button data-view="report">Report a sighting</button>
+    <button data-view="account">My Account</button>
+  </nav>
+
+  <div id="banner-area"></div>
+
+  <!-- MAP VIEW -->
+  <section class="view active" id="view-map">
+    <div class="card">
+      <h2>Lost pets nearby</h2>
+      <p class="muted">A real version would center this on the finder's actual location. This is a stand-in area for testing.</p>
+      <div class="mapbox" id="mainMap"></div>
+      <div class="legend">
+        <span><span class="dot lost"></span> Lost pet — last known spot</span>
+        <span><span class="dot sighting"></span> Sighting reported</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND VIEW -->
+  <section class="view" id="view-find">
+    <div class="card">
+      <h2>Find a pet</h2>
+      <p class="muted">In real life, tapping the NFC tag opens this page directly. Type in a tag code below to simulate a scan.</p>
+      <label for="lookupId">Tag code</label>
+      <div class="row">
+        <input type="text" id="lookupId" placeholder="e.g. K7XQ2" class="mono">
+        <button class="btn" style="flex:0 0 auto" onclick="lookupDog()">View profile</button>
+      </div>
+      <p class="muted" id="quickPicks" style="margin-top:10px"></p>
+    </div>
+    <div id="profileResult"></div>
+  </section>
+
+  <!-- REPORT VIEW -->
+  <section class="view" id="view-report">
+    <div class="card">
+      <h2>Report a sighting</h2>
+      <p class="muted">Seen a pet that's marked lost? Drop a pin and add a note so the owner knows where to look.</p>
+      <label for="sightDog">Which dog</label>
+      <select id="sightDog"></select>
+      <label>Where you saw them</label>
+      <div class="mapbox" id="reportMap"></div>
+      <label for="sightNote">Note (optional)</label>
+      <textarea id="sightNote" placeholder="e.g. Near the park entrance, heading toward the creek"></textarea>
+      <button class="btn" onclick="submitSighting()">Report sighting</button>
+    </div>
+  </section>
+
+  <!-- ACCOUNT VIEW -->
+  <section class="view" id="view-account">
+
+    <div class="card" id="authCard">
+      <h2>Log in</h2>
+      <p class="muted">Sign in with Google to register or manage your pets.</p>
+      <button class="btn" onclick="signInWithGoogle()">Sign in with Google</button>
+    </div>
+
+    <div class="card" id="accountBar" style="display:none">
+      <p class="muted">Logged in as <strong id="accountUsername"></strong></p>
+      <button class="btn secondary small" style="display:inline-block" onclick="logout()">Log out</button>
+    </div>
+
+    <div class="card" id="registerCard" style="display:none">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; cursor:pointer" onclick="toggleRegisterCard()">
+        <div>
+          <h2 id="registerCardTitle">Register a pet</h2>
+          <p class="muted" id="registerCardSubtitle">Create a profile, then the generated code below is what gets programmed onto the physical NFC tag.</p>
+        </div>
+        <span id="registerCardToggleIcon" style="font-size:22px; font-weight:700; color:var(--pen-deep); flex:0 0 auto; margin-left:12px; line-height:1">−</span>
+      </div>
+      <div id="registerCardBody">
+      <label>Species</label>
+      <div class="toggle" id="speciesToggle">
+        <button type="button" data-species="dog" class="on">Dog</button>
+        <button type="button" data-species="cat">Cat</button>
+      </div>
+      <label for="dName">Pet's name</label>
+      <input type="text" id="dName" placeholder="e.g. Biscuit">
+      <label for="dBreed">Breed</label>
+      <div style="position:relative">
+        <input type="text" id="dBreed" autocomplete="off" placeholder="Start typing to search, or pick Other">
+        <div id="breedDropdown" class="breed-dropdown"></div>
+      </div>
+      <div id="mixBreedBuilder" style="display:none; margin-top:10px">
+        <p class="muted" style="margin-bottom:6px">Add each breed in the mix:</p>
+        <div id="mixBreedRows"></div>
+        <button type="button" class="btn small secondary" onclick="addMixRow()">+ Add another breed</button>
+        <button type="button" class="btn small secondary" onclick="exitMixMode(true)">Not a mix — clear</button>
+      </div>
+      <label>Photo (optional)</label>
+      <button type="button" class="btn secondary" style="display:inline-flex; align-items:center; gap:8px" onclick="document.getElementById('dPhoto').click()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        Upload photo
+      </button>
+      <input type="file" id="dPhoto" accept="image/*" onchange="previewPhoto(event)" style="display:none">
+      <div id="photoPreview" style="margin-top:8px"></div>
+
+      <label>Contacts (shown to whoever finds them)</label>
+      <div id="contactRows"></div>
+      <button type="button" class="btn small secondary" onclick="addContactRow()">+ Add another contact</button>
+
+      <label for="dAddress">Home address (shown on the public profile — anyone who scans the tag or looks up the code will see this)</label>
+      <div id="addressAutocompleteContainer"></div>
+      <input type="hidden" id="dAddress">
+      <p class="muted" id="currentAddressDisplay" style="margin-top:4px"></p>
+      <label for="dMed">Medical notes (optional)</label>
+      <textarea id="dMed" placeholder="e.g. Needs twice-daily medication, nervous around men"></textarea>
+      <div id="locationSection" style="display:none">
+        <label>Last known location (click to set)</label>
+        <div class="mapbox" id="registerMap"></div>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn" id="registerSubmitBtn" onclick="registerDog()">Save dog profile</button>
+        <button class="btn secondary" id="cancelEditBtn" style="display:none; flex:0 0 auto" onclick="cancelEdit()">Cancel</button>
+      </div>
+      </div>
+    </div>
+    <div id="registerResult"></div>
+
+    <div class="card" id="myDogsCard" style="display:none">
+      <h2>Your pets</h2>
+      <div id="myDogsList"></div>
+    </div>
+  </section>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getFirestore, collection, doc, getDocs, setDoc, updateDoc, deleteDoc,
+  addDoc, query, where
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {
+  getStorage, ref, uploadBytes, getDownloadURL, deleteObject
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+
+// Australia-wide default view, used until/unless the browser provides a
+// real location or a pet's own saved coordinates take over.
+const AU_CENTER = { lat: -25.2744, lng: 133.7751 };
+let AdvancedMarkerElement, PinElement;
+let mainMapInstance, registerMapInstance, reportMapInstance;
+let registerMapMarker, reportMapMarker;
+let mainMapMarkers = [];
+let mapsReady = false, registerMapReady = false, reportMapReady = false;
+// ============================================================
+// STATE
+// ============================================================
+let dogs = {};
+let sightings = [];
+let newDogLoc = null;
+let reportLoc = null;
+let editingId = null;
+let currentUser = null; // Firebase user object once logged in, else null
+
+// Cloudflare Pages / Netlify / Vercel / Firebase Hosting all support clean
+// URLs; plain static hosts don't. Flip to true if you deploy somewhere
+// with that rewrite rule (Firebase Hosting: add a rewrite in firebase.json).
+const useCleanUrls = false;
+
+// --- Fill these in from your Firebase project: Project settings -> General
+// -> "Your apps" -> Web app -> the firebaseConfig object shown there ---
+const firebaseConfig = {
+  apiKey: "AIzaSyCBR8wNvQkAOE6tw--0CYynIU55gV7rcP4",
+  authDomain: "pet-finder-dt.firebaseapp.com",
+  projectId: "pet-finder-dt",
+  storageBucket: "pet-finder-dt.firebasestorage.app",
+  messagingSenderId: "289789230570",
+  appId: "1:289789230570:web:07dc0d9837c682de4b0693"
+};
+// This entire config, including apiKey, is meant to be public — unlike the
+// GitHub token, it's safe to commit and ship in client-side code. The real
+// security boundary is the Firestore Security Rules (firestore.rules),
+// enforced by Firebase's own servers no matter what the client sends.
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+const googleProvider = new GoogleAuthProvider();
+
+// ============================================================
+// URL / TAG HELPERS
+// ============================================================
+function scannedCodeFromUrl(){
+  const seg = location.pathname.split('/').filter(Boolean).pop();
+  if(seg && dogs[seg.toUpperCase()]) return seg.toUpperCase();
+  const params = new URLSearchParams(location.search);
+  return params.get('tag') ? params.get('tag').toUpperCase() : null;
+}
+
+function tagUrlFor(id){
+  return useCleanUrls
+    ? location.origin + '/' + id
+    : location.origin + location.pathname + '?tag=' + id;
+}
+
+async function writeTagForDog(id){
+  const targetUrl = tagUrlFor(id);
+  if(!('NDEFReader' in window)){
+    showBanner("Web NFC isn't supported in this browser — use Chrome on Android, or write it manually with NFC Tools using this URL: " + targetUrl, 'error');
+    return;
+  }
+  try{
+    const ndef = new NDEFReader();
+    showBanner('Hold your phone against the tag now…', 'ok');
+    await ndef.write({ records: [{ recordType: 'url', data: targetUrl }] });
+    showBanner('Tag written for ' + dogs[id].name + '.', 'ok');
+  } catch(e){
+    showBanner('Write failed or was cancelled: ' + e.message, 'error');
+  }
+}
+
+function uid(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let id;
+  do { id=''; for(let i=0;i<5;i++) id+=chars[Math.floor(Math.random()*chars.length)]; }
+  while(dogs[id]);
+  return id;
+}
+
+// ============================================================
+// UI HELPERS
+// ============================================================
+function showBanner(msg, type, persist){
+  document.getElementById('banner-area').innerHTML =
+    `<div class="banner ${type}">${msg}</div>`;
+  if(!persist){
+    setTimeout(()=>{ document.getElementById('banner-area').innerHTML=''; }, 4000);
+  }
+}
+
+function avatarColor(name){
+  const colors=['#33475B','#B5482F','#4C7A55','#7A4A0F','#5B3358'];
+  let sum=0; for(const c of name) sum+=c.charCodeAt(0);
+  return colors[sum % colors.length];
+}
+
+// ============================================================
+// DATA LOAD / SAVE (Firestore, not GitHub)
+// ============================================================
+function rowToDog(id, r){
+  return {
+    id, name: r.name, breed: r.breed, species: r.species || 'dog', contacts: r.contacts || [], address: r.address,
+    medicalNotes: r.medicalNotes, status: r.status, photoURL: r.photoURL,
+    lat: r.lat ?? null, lng: r.lng ?? null, ownerId: r.ownerId, createdAt: r.createdAt
+  };
+}
+
+async function loadAll(){
+  if(firebaseConfig.apiKey === 'YOUR_API_KEY'){
+    showBanner('firebaseConfig still has placeholder values — fill it in from your Firebase project settings.', 'error', true);
+  }
+
+  try{
+    const dogSnap = await getDocs(collection(db, 'dogs'));
+    dogs = {};
+    dogSnap.forEach(d => dogs[d.id] = rowToDog(d.id, d.data()));
+  } catch(e){
+    dogs = {};
+    showBanner("Couldn't load pets: " + e.message, 'error', true);
+  }
+
+  try{
+    const sightSnap = await getDocs(collection(db, 'sightings'));
+    sightings = [];
+    sightSnap.forEach(s => {
+      const r = s.data();
+      sightings.push({ id:s.id, dogId:r.dogId, x:r.x, y:r.y, note:r.note, timestamp:r.createdAt?.toMillis?.() || Date.now() });
+    });
+  } catch(e){
+    sightings = [];
+    showBanner("Couldn't load sightings: " + e.message, 'error', true);
+  }
+
+  renderAll();
+  renderAccountView();
+
+  const tagParam = scannedCodeFromUrl();
+  if(tagParam){
+    switchView('find');
+    document.getElementById('lookupId').value = tagParam;
+    lookupDog();
+  }
+}
+
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+  renderAccountView();
+});
+
+// ============================================================
+// AUTH (Google sign-in via Firebase)
+// ============================================================
+async function signInWithGoogle(){
+  try{
+    await signInWithPopup(auth, googleProvider);
+  } catch(e){
+    showBanner('Sign-in failed: ' + e.message, 'error');
+  }
+}
+
+async function logout(){
+  await signOut(auth);
+  currentUser = null;
+  cancelEdit();
+  renderAccountView();
+  showBanner('Logged out.', 'ok');
+}
+
+function ownsDog(id){
+  return !!currentUser && !!dogs[id] && dogs[id].ownerId === currentUser.uid;
+}
+
+let registerFormCollapsed = false;
+
+function renderAccountView(){
+  const loggedIn = !!currentUser;
+  document.getElementById('authCard').style.display = loggedIn ? 'none' : 'block';
+  document.getElementById('accountBar').style.display = loggedIn ? 'block' : 'none';
+  document.getElementById('registerCard').style.display = loggedIn ? 'block' : 'none';
+  document.getElementById('myDogsCard').style.display = loggedIn ? 'block' : 'none';
+  syncRegisterCardCollapse();
+  if(loggedIn){
+    document.getElementById('accountUsername').textContent = currentUser.displayName || currentUser.email || currentUser.uid;
+    renderMyDogs();
+  }
+}
+
+function syncRegisterCardCollapse(){
+  document.getElementById('registerCardBody').style.display = registerFormCollapsed ? 'none' : 'block';
+  document.getElementById('registerCardToggleIcon').textContent = registerFormCollapsed ? '+' : '−';
+}
+
+function toggleRegisterCard(){
+  registerFormCollapsed = !registerFormCollapsed;
+  syncRegisterCardCollapse();
+}
+
+function renderMyDogs(){
+  const el = document.getElementById('myDogsList');
+  const mine = Object.values(dogs).filter(d => d.ownerId === currentUser.uid);
+  if(!mine.length){
+    el.innerHTML = '<div class="empty">No pets registered to this account yet — use the form above.</div>';
+    return;
+  }
+  el.innerHTML = mine.map(d => `
+    <div class="list-row">
+      <div>
+        <strong>${d.name}</strong> <span class="id mono">${d.id}</span> <span class="badge ${d.status}">${d.status}</span>
+        <div class="muted mono" style="margin-top:2px; font-size:12px">${tagUrlFor(d.id)}</div>
+        ${d.address ? `<div class="muted" style="margin-top:2px">${d.address}</div>` : ''}
+        <div class="toggle" style="margin-top:8px">
+          <button type="button" class="safe ${d.status==='safe'?'on':''}" onclick="toggleStatus('${d.id}','safe')">Safe at home</button>
+          <button type="button" class="lost ${d.status==='lost'?'on':''}" onclick="toggleStatus('${d.id}','lost')">Currently lost</button>
+        </div>
+      </div>
+      <div>
+        <button class="btn small secondary" onclick="editDog('${d.id}')">Edit</button>
+        <button class="btn small danger" onclick="deletePet('${d.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+async function toggleStatus(id, newStatus){
+  if(!ownsDog(id)){
+    showBanner('You can only change status on pets registered to your own account.', 'error');
+    return;
+  }
+  if(dogs[id].status === newStatus) return;
+  const name = dogs[id].name;
+  try{
+    await updateDoc(doc(db, 'dogs', id), { status: newStatus });
+  } catch(e){ showBanner('Could not update status: ' + e.message, 'error'); return; }
+  await loadAll();
+  if(newStatus === 'lost'){
+    showBanner(name + ' is now marked lost. Click the map to set their last known location.', 'ok');
+    await editDog(id, true); // the one place the location map opens automatically
+  } else {
+    showBanner(name + ' is now marked safe.', 'ok');
+  }
+}
+
+async function deletePet(id){
+  if(!ownsDog(id)){
+    showBanner('You can only delete pets registered to your own account.', 'error');
+    return;
+  }
+  const name = dogs[id].name;
+  const hadPhoto = !!dogs[id].photoURL;
+  if(!confirm(`Delete ${name}'s profile? This also removes their tag code — it won't work if it's already on a physical tag. This cannot be undone.`)) return;
+
+  try{
+    // Photo has to go first — the Storage rule checks the Firestore doc
+    // to confirm ownership, so deleting the doc first would leave nothing
+    // for that check to look up against.
+    if(hadPhoto){
+      try{ await deleteObject(ref(storage, 'dog-photos/' + id)); }
+      catch(e){ /* photo may already be gone — not fatal, keep going */ }
+    }
+    await deleteDoc(doc(db, 'dogs', id));
+  } catch(e){ showBanner('Could not delete: ' + e.message, 'error'); return; }
+
+  if(editingId === id) cancelEdit();
+  await loadAll();
+  showBanner(name + ' has been deleted.', 'ok');
+}
+
+// ============================================================
+// MAP
+// ============================================================
+async function initGoogleMaps(){
+  try{
+    const [mapsLib, markerLib] = await Promise.all([
+      google.maps.importLibrary("maps"),
+      google.maps.importLibrary("marker")
+    ]);
+    AdvancedMarkerElement = markerLib.AdvancedMarkerElement;
+    PinElement = markerLib.PinElement;
+    mapsReady = true;
+    setupMainMap();
+    // In case the person already switched tabs before this finished
+    // loading — switchView()/editDog() would have skipped setting these up.
+    const activeView = document.querySelector('nav.tabs button.active')?.dataset.view;
+    if(activeView==='report' && !reportMapReady) setupReportMap();
+    const locationVisible = document.getElementById('locationSection').style.display !== 'none';
+    if(locationVisible && !registerMapReady) setupRegisterMap();
+  } catch(e){
+    ['mainMap','registerMap','reportMap'].forEach(id=>{
+      document.getElementById(id).innerHTML =
+        '<p class="muted" style="padding:20px">Map unavailable right now — check the Google Maps API key setup.</p>';
+    });
+  }
+}
+
+function tryGeolocate(map){
+  if(!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(
+    pos => { map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude}); map.setZoom(12); },
+    () => {} // denied or unavailable — the Australia-wide default view stays as-is
+  );
+}
+
+function setupMainMap(){
+  mainMapInstance = new google.maps.Map(document.getElementById('mainMap'), {
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy'
+  });
+  tryGeolocate(mainMapInstance);
+  renderMainMapMarkers();
+}
+
+// Builds a round photo-bubble marker with a small pointer tail, matching
+// the classic "photo pin" look. Falls back to a colored initial-letter
+// bubble (same style as the flyer avatar) when the pet has no photo.
+function buildPhotoPinContent(dog, ringColor){
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'display:flex; flex-direction:column; align-items:center;';
+
+  const bubble = document.createElement('div');
+  bubble.style.cssText = `
+    width:40px; height:40px; border-radius:50%; border:3px solid ${ringColor};
+    overflow:hidden; box-shadow:0 2px 6px rgba(43,38,32,0.35); background:#fff;
+    display:flex; align-items:center; justify-content:center;
+  `;
+  if(dog && dog.photoURL){
+    const img = document.createElement('img');
+    img.src = dog.photoURL;
+    img.style.cssText = 'width:100%; height:100%; object-fit:cover;';
+    bubble.appendChild(img);
+  } else {
+    bubble.style.background = dog ? avatarColor(dog.name) : ringColor;
+    const initial = document.createElement('span');
+    initial.textContent = dog ? dog.name[0].toUpperCase() : '?';
+    initial.style.cssText = "color:#fff; font-family:'Kalam',cursive; font-weight:700; font-size:16px;";
+    bubble.appendChild(initial);
+  }
+
+  const tail = document.createElement('div');
+  tail.style.cssText = `
+    width:0; height:0; margin-top:-2px;
+    border-left:6px solid transparent; border-right:6px solid transparent;
+    border-top:9px solid ${ringColor};
+  `;
+  wrap.appendChild(bubble);
+  wrap.appendChild(tail);
+  return wrap;
+}
+
+function renderMainMapMarkers(){
+  if(!mapsReady) return;
+  mainMapMarkers.forEach(m => m.map = null);
+  mainMapMarkers = [];
+
+  Object.values(dogs).forEach(d=>{
+    if(d.status==='lost' && d.lat!=null && d.lng!=null){
+      const marker = new AdvancedMarkerElement({
+        map: mainMapInstance, position: {lat:d.lat, lng:d.lng},
+        title: d.name + ' — last known location', content: buildPhotoPinContent(d, '#E8A33D')
+      });
+      const info = new google.maps.InfoWindow({ content: `<strong>${d.name}</strong><br>Last known location — marked lost` });
+      marker.addListener('click', () => info.open(mainMapInstance, marker));
+      mainMapMarkers.push(marker);
+    }
+  });
+
+  sightings.forEach(s=>{
+    if(s.lat!=null && s.lng!=null){
+      const dog = dogs[s.dogId];
+      const marker = new AdvancedMarkerElement({
+        map: mainMapInstance, position: {lat:s.lat, lng:s.lng},
+        title: 'Sighting: ' + (dog ? dog.name : s.dogId), content: buildPhotoPinContent(dog, '#33475B')
+      });
+      const info = new google.maps.InfoWindow({
+        content: `<strong>Sighting: ${dog ? dog.name : s.dogId}</strong>${s.note ? '<br>' + s.note : ''}`
+      });
+      marker.addListener('click', () => info.open(mainMapInstance, marker));
+      mainMapMarkers.push(marker);
+    }
+  });
+}
+
+// Figures out which photo/name to show in the register map's pin — a
+// freshly-picked (not yet uploaded) photo takes priority, then whatever
+// photo the pet being edited already has, then just an initial letter.
+function registerMapPinDog(){
+  const name = document.getElementById('dName').value.trim()
+    || (editingId && dogs[editingId] ? dogs[editingId].name : '') || '?';
+  const photoURL = selectedPhotoFile
+    ? URL.createObjectURL(selectedPhotoFile)
+    : (editingId && dogs[editingId] ? dogs[editingId].photoURL : null);
+  return { name, photoURL };
+}
+
+function setupRegisterMap(){
+  registerMapInstance = new google.maps.Map(document.getElementById('registerMap'), {
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy'
+  });
+  tryGeolocate(registerMapInstance);
+  registerMapInstance.addListener('click', (e)=>{
+    const lat = e.latLng.lat(), lng = e.latLng.lng();
+    newDogLoc = {lat, lng};
+    if(registerMapMarker) registerMapMarker.map = null;
+    registerMapMarker = new AdvancedMarkerElement({
+      map: registerMapInstance, position:{lat,lng}, content: buildPhotoPinContent(registerMapPinDog(), '#33475B')
+    });
+  });
+  registerMapReady = true;
+}
+
+function setupReportMap(){
+  reportMapInstance = new google.maps.Map(document.getElementById('reportMap'), {
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy'
+  });
+  tryGeolocate(reportMapInstance);
+  reportMapInstance.addListener('click', (e)=>{
+    const lat = e.latLng.lat(), lng = e.latLng.lng();
+    reportLoc = {lat, lng};
+    if(reportMapMarker) reportMapMarker.map = null;
+    const dog = dogs[document.getElementById('sightDog').value];
+    reportMapMarker = new AdvancedMarkerElement({
+      map: reportMapInstance, position:{lat,lng}, content: buildPhotoPinContent(dog, '#33475B')
+    });
+  });
+  reportMapReady = true;
+}
+// ============================================================
+// RENDER: dropdowns, hints
+// ============================================================
+function renderAll(){
+  renderMainMapMarkers();
+  renderDogSelect();
+  renderQuickPicks();
+}
+
+function renderDogSelect(){
+  const sel=document.getElementById('sightDog');
+  const lost=Object.values(dogs).filter(d=>d.status==='lost');
+  sel.innerHTML = lost.length
+    ? lost.map(d=>`<option value="${d.id}">${d.name} (${d.id})</option>`).join('')
+    : `<option value="">No pets currently marked lost</option>`;
+}
+
+function renderQuickPicks(){
+  const el=document.getElementById('quickPicks');
+  el.textContent = Object.keys(dogs).length
+    ? "Don't know the code offhand? It's on the tag itself. To edit a profile, log in under My Account."
+    : 'No pets registered yet — try the My Account tab.';
+}
+
+// ============================================================
+// FIND A DOG / PROFILE
+// ============================================================
+function lookupDog(){
+  const id=document.getElementById('lookupId').value.trim().toUpperCase();
+  const result=document.getElementById('profileResult');
+  const dog=dogs[id];
+  if(!dog){
+    result.innerHTML = id ? `<div class="empty">No pet found with tag code "${id}". Double-check the code on the tag.</div>` : '';
+    return;
+  }
+  const avatarHtml = dog.photoURL
+    ? `<img src="${dog.photoURL}" alt="${dog.name}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;float:left;margin-right:14px">`
+    : `<div class="flyer-avatar" style="background:${avatarColor(dog.name)}">${dog.name[0].toUpperCase()}</div>`;
+  const contacts = (dog.contacts && dog.contacts.length) ? dog.contacts : [];
+  result.innerHTML = `
+    <div class="flyer">
+      <div class="flyer-top">
+        ${avatarHtml}
+        <div class="flyer-name">${dog.name}</div>
+        <div class="flyer-breed">${dog.species === 'cat' ? 'Cat' : 'Dog'} · ${dog.breed || 'Breed not listed'}</div>
+        <div style="margin-top:6px"><span class="badge ${dog.status}">${dog.status}</span></div>
+      </div>
+      <div class="flyer-body">
+        ${dog.medicalNotes ? `<p><strong>Medical notes:</strong> ${dog.medicalNotes}</p>` : ''}
+        ${contacts.map(c => `<p><strong>${c.name || 'Contact'}:</strong> <span class="mono">${c.phone}</span></p>`).join('')}
+        ${dog.address ? `<p><strong>Address:</strong> ${dog.address}</p>` : ''}
+        ${dog.status==='lost' ? `<button class="btn" onclick="jumpToReport('${dog.id}')">Report a sighting</button>` : ''}
+      </div>
+    </div>`;
+}
+
+function jumpToReport(id){
+  switchView('report');
+  document.getElementById('sightDog').value=id;
+}
+
+// ============================================================
+// BREED FIELD (search + mixed-breed builder)
+// ============================================================
+// ============================================================
+// CONTACTS (multiple name + phone pairs)
+// ============================================================
+function addContactRow(name, phone){
+  const rows = document.getElementById('contactRows');
+  const row = document.createElement('div');
+  row.className = 'row contact-row';
+  row.style.marginBottom = '6px';
+  row.style.alignItems = 'flex-start';
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.className = 'contact-name-input';
+  nameInput.placeholder = 'e.g. Leon (owner)';
+  nameInput.value = name || '';
+  nameInput.addEventListener('blur', function(){ checkFieldFilled(this); });
+  nameInput.addEventListener('input', function(){ if(this.value.trim()) this.classList.remove('field-missing'); });
+  if(name) checkFieldFilled(nameInput);
+
+  const phoneWrap = document.createElement('div');
+  phoneWrap.style.flex = '1';
+  const phoneInput = document.createElement('input');
+  phoneInput.type = 'tel';
+  phoneInput.className = 'contact-phone-input';
+  phoneInput.placeholder = 'e.g. 0412 345 678';
+  phoneInput.value = phone || '';
+  const phoneError = document.createElement('div');
+  phoneError.className = 'phone-error';
+  phoneError.textContent = 'Required';
+  phoneWrap.appendChild(phoneInput);
+  phoneWrap.appendChild(phoneError);
+
+  let phoneCheckTimer;
+  const checkPhone = () => {
+    const val = phoneInput.value.trim();
+    const empty = !val;
+    const invalid = !empty && !isValidAuPhone(val);
+    const valid = !empty && !invalid;
+    phoneInput.classList.toggle('invalid', empty || invalid);
+    phoneInput.classList.toggle('valid', valid);
+    phoneError.textContent = empty ? 'Required' : 'Invalid phone number';
+    phoneError.classList.toggle('show', empty || invalid);
+  };
+  phoneInput._checkPhone = checkPhone;
+  phoneInput.addEventListener('input', () => {
+    clearTimeout(phoneCheckTimer);
+    phoneCheckTimer = setTimeout(checkPhone, 500);
+  });
+  phoneInput.addEventListener('blur', () => { clearTimeout(phoneCheckTimer); checkPhone(); });
+  if(phone) checkPhone(); // pre-filled rows (editing) get checked immediately
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.className = 'btn small secondary';
+  removeBtn.style.flex = '0 0 auto';
+  removeBtn.textContent = 'Remove';
+  removeBtn.onclick = () => {
+    if(document.querySelectorAll('.contact-row').length <= 1){
+      showBanner('At least one contact is required.', 'error');
+      return;
+    }
+    row.remove();
+  };
+  row.appendChild(nameInput);
+  row.appendChild(phoneWrap);
+  row.appendChild(removeBtn);
+  rows.appendChild(row);
+}
+
+function collectContacts(){
+  return [...document.querySelectorAll('.contact-row')].map(row => ({
+    name: row.querySelector('.contact-name-input').value.trim(),
+    phone: row.querySelector('.contact-phone-input').value.trim()
+  })).filter(c => c.phone);
+}
+
+// Free format check only — confirms a number LOOKS like a real Australian
+// phone number (right length, valid mobile/landline prefix). It does not
+// confirm the number is actually connected or reachable. Accepts the
+// standard 0-prefixed form, the +61/61 international form, and the bare
+// 9-digit form with no prefix at all (reasonable here since every number
+// in this app is implicitly Australian).
+function isValidAuPhone(raw){
+  const digits = raw.replace(/[\s\-()]/g, '');
+  return /^0[2-478]\d{8}$/.test(digits)
+      || /^\+?61[2-478]\d{8}$/.test(digits)
+      || /^[2-478]\d{8}$/.test(digits);
+}
+
+function resetContactRows(list){
+  document.getElementById('contactRows').innerHTML = '';
+  if(list && list.length){
+    list.forEach(c => addContactRow(c.name, c.phone));
+  } else {
+    addContactRow();
+  }
+}
+
+// ============================================================
+// PHOTO
+// ============================================================
+let selectedPhotoFile = null;
+
+function previewPhoto(e){
+  const file = e.target.files[0];
+  selectedPhotoFile = file || null;
+  const el = document.getElementById('photoPreview');
+  if(!file){ el.innerHTML = ''; return; }
+  const url = URL.createObjectURL(file);
+  el.innerHTML = `<img src="${url}" style="width:64px;height:64px;border-radius:50%;object-fit:cover">`;
+}
+
+async function uploadDogPhoto(dogId, file){
+  const fileRef = ref(storage, 'dog-photos/' + dogId);
+  await uploadBytes(fileRef, file, { contentType: file.type });
+  return await getDownloadURL(fileRef);
+}
+
+
+function addMixRow(value){
+  const rows = document.getElementById('mixBreedRows');
+  const row = document.createElement('div');
+  row.className = 'row mix-row';
+  row.style.marginBottom = '6px';
+
+  const wrap = document.createElement('div');
+  wrap.style.position = 'relative';
+  wrap.style.flex = '1';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'mix-breed-input';
+  input.placeholder = 'Breed';
+  input.value = value || '';
+  input.addEventListener('input', updateMixBreedValue);
+
+  const dropdown = document.createElement('div');
+  dropdown.className = 'breed-dropdown';
+
+  wrap.appendChild(input);
+  wrap.appendChild(dropdown);
+
+  attachBreedAutocomplete(input, dropdown, false, (selected) => {
+    input.value = selected;
+    updateMixBreedValue();
+  });
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.className = 'btn small secondary';
+  removeBtn.style.flex = '0 0 auto';
+  removeBtn.textContent = 'Remove';
+  removeBtn.onclick = ()=>removeMixRow(row);
+  row.appendChild(wrap);
+  row.appendChild(removeBtn);
+  rows.appendChild(row);
+  updateMixBreedValue();
+}
+
+function removeMixRow(row){
+  const rows = document.getElementById('mixBreedRows');
+  if(rows.children.length <= 2){
+    showBanner('A mix needs at least 2 breeds — use "Not a mix" to clear the whole thing instead.', 'error');
+    return;
+  }
+  row.remove();
+  updateMixBreedValue();
+}
+
+function updateMixBreedValue(){
+  const names = [...document.querySelectorAll('.mix-breed-input')].map(i=>i.value.trim()).filter(Boolean);
+  const breedEl = document.getElementById('dBreed');
+  breedEl.value = names.length ? names.join(' x ') + ' Mix' : '';
+  breedEl.classList.toggle('field-missing', !breedEl.value.trim());
+}
+
+function enterMixMode(existingBreeds){
+  document.getElementById('mixBreedRows').innerHTML = '';
+  (existingBreeds && existingBreeds.length ? existingBreeds : ['','']).forEach(b=>addMixRow(b));
+  document.getElementById('mixBreedBuilder').style.display = 'block';
+  document.getElementById('dBreed').readOnly = true;
+}
+
+function exitMixMode(focus){
+  document.getElementById('mixBreedBuilder').style.display = 'none';
+  document.getElementById('mixBreedRows').innerHTML = '';
+  const breedField = document.getElementById('dBreed');
+  breedField.readOnly = false;
+  breedField.value = '';
+  breedField.placeholder = 'Start typing to search, or pick Other';
+  if(focus) breedField.focus();
+}
+
+const DOG_BREEDS = [
+  'Akita','Alaskan Malamute','American Staffordshire Terrier','Australian Cattle Dog',
+  'Australian Shepherd','Basset Hound','Beagle','Belgian Malinois','Bernese Mountain Dog',
+  'Bichon Frise','Bloodhound','Border Collie','Border Terrier','Boston Terrier','Boxer',
+  'Brittany','Bull Terrier','Bulldog','Cane Corso','Cavalier King Charles Spaniel',
+  'Chihuahua','Chow Chow','Cocker Spaniel','Collie','Dachshund','Doberman Pinscher',
+  'English Springer Spaniel','French Bulldog','German Shepherd','German Shorthaired Pointer',
+  'Golden Retriever','Great Dane','Great Pyrenees','Greyhound','Havanese','Irish Setter',
+  'Jack Russell Terrier','Labrador Retriever','Maltese','Mastiff','Miniature Schnauzer',
+  'Newfoundland','Papillon','Pembroke Welsh Corgi','Pomeranian','Poodle','Pug',
+  'Rhodesian Ridgeback','Rottweiler','Samoyed','Shetland Sheepdog','Shiba Inu','Shih Tzu',
+  'Siberian Husky','Staffordshire Bull Terrier','St. Bernard','Vizsla','Weimaraner',
+  'West Highland White Terrier','Whippet','Yorkshire Terrier'
+];
+const CAT_BREEDS = [
+  'Abyssinian','American Shorthair','Bengal','Birman','British Shorthair','Burmese',
+  'Chartreux','Cornish Rex','Devon Rex','Domestic Longhair','Domestic Shorthair',
+  'Egyptian Mau','Exotic Shorthair','Himalayan','Japanese Bobtail','Maine Coon','Manx',
+  'Munchkin','Norwegian Forest Cat','Ocicat','Oriental Shorthair','Persian','Ragdoll',
+  'Russian Blue','Scottish Fold','Selkirk Rex','Siamese','Siberian','Singapura','Somali',
+  'Sphynx','Tonkinese','Turkish Angora','Turkish Van'
+];
+
+function currentSpecies(){
+  const btn = document.querySelector('#speciesToggle button.on');
+  return btn ? btn.dataset.species : 'dog';
+}
+
+function speciesBreedList(){
+  return currentSpecies() === 'cat' ? CAT_BREEDS : DOG_BREEDS;
+}
+
+function renderBreedOptionsInto(dropdownEl, filterText, includeSpecial){
+  const options = includeSpecial ? ['Other', 'Mixed breed', ...speciesBreedList()] : speciesBreedList();
+  const q = filterText.trim().toLowerCase();
+  const matches = q ? options.filter(b => b.toLowerCase().includes(q)) : options;
+  if(!matches.length){
+    dropdownEl.innerHTML = '<div class="breed-empty">No matches — you can still type a custom breed</div>';
+  } else {
+    dropdownEl.innerHTML = matches.slice(0, 60).map(b =>
+      `<div class="breed-option${(b==='Other'||b==='Mixed breed')?' special':''}" data-value="${b}">${b}</div>`
+    ).join('');
+  }
+  dropdownEl.classList.add('open');
+}
+
+// Wires up an input + its dedicated dropdown element as a searchable breed
+// picker. `onSelect` decides what happens when an option is tapped/clicked —
+// the main field handles "Other"/"Mixed breed" specially, mix rows just set
+// their own value.
+function attachBreedAutocomplete(inputEl, dropdownEl, includeSpecial, onSelect){
+  const show = () => renderBreedOptionsInto(dropdownEl, inputEl.value, includeSpecial);
+  inputEl.addEventListener('focus', show);
+  inputEl.addEventListener('input', show);
+  inputEl.addEventListener('blur', () => {
+    // Delayed so a tap/click on a dropdown option registers before it's
+    // hidden — blur fires first on mobile, and hiding immediately eats the tap.
+    setTimeout(() => dropdownEl.classList.remove('open'), 150);
+  });
+  dropdownEl.addEventListener('click', (e) => {
+    const opt = e.target.closest('.breed-option');
+    if(!opt) return;
+    onSelect(opt.dataset.value);
+    dropdownEl.classList.remove('open');
+  });
+}
+
+function selectMainBreed(value){
+  const field = document.getElementById('dBreed');
+  if(value === 'Other'){
+    field.value = '';
+    field.placeholder = 'Type the breed…';
+    field.focus();
+  } else if(value === 'Mixed breed'){
+    enterMixMode();
+  } else {
+    field.value = value;
+  }
+}
+
+attachBreedAutocomplete(
+  document.getElementById('dBreed'),
+  document.getElementById('breedDropdown'),
+  true,
+  selectMainBreed
+);
+
+function checkFieldFilled(el){
+  el.classList.toggle('field-missing', !el.value.trim());
+}
+const dNameEl = document.getElementById('dName');
+dNameEl.addEventListener('blur', function(){ checkFieldFilled(this); });
+dNameEl.addEventListener('input', function(){ if(this.value.trim()) this.classList.remove('field-missing'); });
+
+const dBreedEl = document.getElementById('dBreed');
+dBreedEl.addEventListener('blur', function(){ checkFieldFilled(this); });
+dBreedEl.addEventListener('input', function(){ if(this.value.trim()) this.classList.remove('field-missing'); });
+
+document.getElementById('speciesToggle').addEventListener('click', (e) => {
+  const btn = e.target.closest('button'); if(!btn) return;
+  document.querySelectorAll('#speciesToggle button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  // Breeds don't carry across species, so clear whatever was selected.
+  exitMixMode(false);
+  document.getElementById('dBreed').value = '';
+});
+
+// ============================================================
+// REGISTER / EDIT A DOG (account-gated)
+// ============================================================
+function resetRegisterForm(){
+  document.getElementById('dName').value='';
+  document.getElementById('dName').classList.remove('field-missing');
+  document.querySelectorAll('#speciesToggle button').forEach(b=>b.classList.toggle('on', b.dataset.species==='dog'));
+  document.getElementById('dBreed').value='';
+  document.getElementById('dBreed').classList.remove('field-missing');
+  exitMixMode(false);
+  resetContactRows();
+  document.getElementById('dAddress').value='';
+  document.getElementById('currentAddressDisplay').textContent='';
+  document.getElementById('dMed').value='';
+  document.getElementById('dPhoto').value='';
+  document.getElementById('photoPreview').innerHTML='';
+  selectedPhotoFile=null;
+  document.getElementById('locationSection').style.display='none';
+  document.getElementById('registerSubmitBtn').textContent='Save pet profile';
+  document.getElementById('registerCardTitle').textContent='Register a pet';
+  document.getElementById('cancelEditBtn').style.display='none';
+  editingId=null;
+  newDogLoc=null;
+  if(registerMapMarker){ registerMapMarker.map = null; registerMapMarker = null; }
+}
+
+function cancelEdit(){
+  resetRegisterForm();
+  document.getElementById('registerResult').innerHTML='';
+}
+
+async function editDog(id, showLocationMap = false){
+  if(!dogs[id]){
+    showBanner('No pet found with that tag code.', 'error');
+    return;
+  }
+  if(!currentUser){
+    showBanner('Log in under My Account first.', 'error');
+    switchView('account');
+    return;
+  }
+  if(!ownsDog(id)){
+    showBanner('This profile belongs to a different account.', 'error');
+    return;
+  }
+  const d=dogs[id];
+  registerFormCollapsed = false;
+  document.getElementById('registerCard').style.display = 'block';
+  syncRegisterCardCollapse();
+  document.getElementById('dName').value=d.name;
+  document.querySelectorAll('#speciesToggle button').forEach(b=>b.classList.toggle('on', b.dataset.species===(d.species||'dog')));
+  const mixMatch = d.breed && d.breed.match(/^(.+) Mix$/);
+  if(mixMatch){
+    enterMixMode(mixMatch[1].split(' x ').map(s=>s.trim()));
+  } else {
+    exitMixMode(false);
+    document.getElementById('dBreed').value=d.breed;
+  }
+  resetContactRows(d.contacts);
+  document.getElementById('dAddress').value=d.address || '';
+  document.getElementById('currentAddressDisplay').textContent = d.address ? ('Current: ' + d.address) : '';
+  document.getElementById('dMed').value=d.medicalNotes;
+  document.getElementById('dPhoto').value='';
+  selectedPhotoFile=null;
+  document.getElementById('photoPreview').innerHTML = d.photoURL
+    ? `<img src="${d.photoURL}" style="width:64px;height:64px;border-radius:50%;object-fit:cover">`
+    : '';
+  editingId=id;
+  document.getElementById('registerCardTitle').textContent='Editing '+d.name;
+  document.getElementById('registerSubmitBtn').textContent='Save changes';
+  document.getElementById('cancelEditBtn').style.display='inline-block';
+  document.getElementById('registerResult').innerHTML='';
+  switchView('account');
+
+  // The map only appears when editDog was opened specifically because a
+  // pet was just marked lost (see toggleStatus) — not every time someone
+  // reopens Edit on a pet that happens to already be lost.
+  document.getElementById('locationSection').style.display = showLocationMap ? 'block' : 'none';
+  if(showLocationMap){
+    if(mapsReady && !registerMapReady) setupRegisterMap();
+    if(mapsReady && registerMapReady && d.lat!=null && d.lng!=null){
+      if(registerMapMarker) registerMapMarker.map = null;
+      registerMapMarker = new AdvancedMarkerElement({
+        map: registerMapInstance, position:{lat:d.lat, lng:d.lng}, content: buildPhotoPinContent(d, '#33475B')
+      });
+      registerMapInstance.setCenter({lat:d.lat, lng:d.lng});
+      registerMapInstance.setZoom(12);
+    }
+  }
+  showBanner('Editing '+d.name+'. Update the fields below and save.', 'ok');
+}
+
+// Checks every required field, highlighting each one that's missing or
+// invalid, and returns whether the form is actually save-able. Runs at
+// submit time so it catches fields the person never got around to
+// touching, not just ones they blurred past.
+function validateRegisterForm(){
+  let ok = true;
+
+  const nameEl = document.getElementById('dName');
+  checkFieldFilled(nameEl);
+  if(nameEl.classList.contains('field-missing')) ok = false;
+
+  const breedEl = document.getElementById('dBreed');
+  checkFieldFilled(breedEl);
+  if(breedEl.classList.contains('field-missing')) ok = false;
+
+  document.querySelectorAll('.contact-row').forEach(row => {
+    const nameInput = row.querySelector('.contact-name-input');
+    const phoneInput = row.querySelector('.contact-phone-input');
+    checkFieldFilled(nameInput);
+    if(nameInput.classList.contains('field-missing')) ok = false;
+    phoneInput._checkPhone();
+    if(phoneInput.classList.contains('invalid')) ok = false;
+  });
+
+  return ok;
+}
+
+async function registerDog(){
+  if(!currentUser){
+    showBanner('Log in first to register a pet.', 'error');
+    return;
+  }
+
+  if(!validateRegisterForm()){
+    showBanner('Fill in every highlighted field before saving.', 'error');
+    return;
+  }
+
+  const name=document.getElementById('dName').value.trim();
+  const species=currentSpecies();
+  const breed=document.getElementById('dBreed').value.trim();
+  const contacts=collectContacts();
+  const address=document.getElementById('dAddress').value.trim();
+  const medicalNotes=document.getElementById('dMed').value.trim();
+  // Status isn't set from this form anymore — it's managed from the Your
+  // Pets list. New pets start safe; edits keep whatever status they had.
+  const status = editingId ? dogs[editingId].status : 'safe';
+
+  let id;
+  if(editingId){
+    if(!ownsDog(editingId)){
+      showBanner('You can only edit pets registered to your own account.', 'error');
+      return;
+    }
+    id=editingId;
+    try{
+      await updateDoc(doc(db, 'dogs', id), {
+        name, species, breed, contacts, address, medicalNotes, status,
+        lat: newDogLoc ? newDogLoc.lat : (dogs[id].lat ?? null),
+        lng: newDogLoc ? newDogLoc.lng : (dogs[id].lng ?? null)
+      });
+    } catch(e){ showBanner('Could not save: ' + e.message, 'error'); return; }
+  } else {
+    id=uid();
+    try{
+      // Doc is created first, with no photo yet — the Storage security
+      // rule checks this Firestore doc to confirm ownership before it'll
+      // accept an upload, so the doc has to exist before the photo does.
+      await setDoc(doc(db, 'dogs', id), {
+        name, species, breed, contacts, address, medicalNotes, status,
+        ownerId: currentUser.uid, photoURL: null,
+        lat: newDogLoc?newDogLoc.lat:null, lng: newDogLoc?newDogLoc.lng:null,
+        createdAt: Date.now()
+      });
+    } catch(e){ showBanner('Could not save: ' + e.message, 'error'); return; }
+  }
+
+  if(selectedPhotoFile){
+    try{
+      showBanner('Uploading photo…', 'ok');
+      const url = await uploadDogPhoto(id, selectedPhotoFile);
+      await updateDoc(doc(db, 'dogs', id), { photoURL: url });
+    } catch(e){
+      showBanner('Profile saved, but the photo upload failed: ' + e.message, 'error');
+    }
+  }
+
+  const wasEditing = !!editingId;
+  await loadAll();
+
+  document.getElementById('registerResult').innerHTML = wasEditing ? `
+    <div class="card" style="text-align:center">
+      <p class="muted">Changes saved for tag code:</p>
+      <div class="mono" style="font-size:24px; font-weight:700; letter-spacing:3px; color:var(--pen-deep)">${id}</div>
+    </div>` : `
+    <div class="card" style="text-align:center">
+      <p class="muted" style="margin-bottom:6px">This code is what gets programmed onto the physical tag:</p>
+      <div class="mono" style="font-size:32px; font-weight:700; letter-spacing:4px; color:var(--pen-deep)">${id}</div>
+      <p class="muted" style="margin-top:8px">Tag URL: <span class="mono">${tagUrlFor(id)}</span></p>
+      <button class="btn" onclick="writeTagForDog('${id}')">Write this to an NFC tag</button>
+      <p class="muted" style="margin-top:8px; font-size:11px">Needs Chrome on Android. This writes today's page address — rewrite the tag once this app is on permanent hosting.</p>
+    </div>`;
+
+  showBanner(name+"'s profile has been saved.", 'ok');
+  resetRegisterForm();
+  if(wasEditing){
+    registerFormCollapsed = true;
+    syncRegisterCardCollapse();
+  }
+}
+
+// ============================================================
+// SIGHTINGS
+// ============================================================
+async function submitSighting(){
+  const dogId=document.getElementById('sightDog').value;
+  if(!dogId){ showBanner('Pick a dog to report a sighting for.', 'error'); return; }
+  if(!reportLoc){ showBanner('Click the map to drop a pin first.', 'error'); return; }
+  const note=document.getElementById('sightNote').value.trim();
+  try{
+    await addDoc(collection(db, 'sightings'), {
+      dogId, lat: reportLoc.lat, lng: reportLoc.lng, note, createdAt: Date.now()
+    });
+  } catch(e){ showBanner('Could not report sighting: ' + e.message, 'error'); return; }
+  await loadAll();
+  document.getElementById('sightNote').value='';
+  reportLoc=null;
+  if(reportMapMarker){ reportMapMarker.map = null; reportMapMarker = null; }
+  showBanner('Sighting reported — thank you for helping out.', 'ok');
+  switchView('map');
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function switchView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active', b.dataset.view===name));
+  if(name==='report' && mapsReady && !reportMapReady) setupReportMap();
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>{
+  b.addEventListener('click', ()=>switchView(b.dataset.view));
+});
+
+
+// Inline onclick="..." attributes in the HTML need these exposed globally,
+// since a module script's top-level functions aren't visible to them by default.
+Object.assign(window, {
+  signInWithGoogle, logout, lookupDog, jumpToReport, writeTagForDog,
+  addMixRow, exitMixMode, editDog, registerDog, cancelEdit, submitSighting,
+  addContactRow, previewPhoto, deletePet, toggleStatus, toggleRegisterCard
+});
+
+// ============================================================
+// ADDRESS AUTOCOMPLETE (Google Places, Australia only)
+// ============================================================
+async function initAddressAutocomplete(){
+  try{
+    await google.maps.importLibrary("places");
+    const autocomplete = new google.maps.places.PlaceAutocompleteElement({
+      includedRegionCodes: ['au']
+    });
+    autocomplete.placeholder = 'Start typing an address…';
+    document.getElementById('addressAutocompleteContainer').appendChild(autocomplete);
+
+    autocomplete.addEventListener('gmp-select', async ({ placePrediction }) => {
+      const place = placePrediction.toPlace();
+      await place.fetchFields({ fields: ['formattedAddress'] });
+      document.getElementById('dAddress').value = place.formattedAddress;
+      document.getElementById('currentAddressDisplay').textContent = 'Current: ' + place.formattedAddress;
+    });
+  } catch(e){
+    // Falls back gracefully — registration still works without address
+    // autocomplete if the Maps API key isn't set up yet or fails to load.
+    document.getElementById('addressAutocompleteContainer').innerHTML =
+      '<p class="muted">Address search unavailable right now — the field still saves if typed elsewhere.</p>';
+  }
+}
+
+resetContactRows();
+initAddressAutocomplete();
+initGoogleMaps();
+loadAll();
+</script>
+</body>
+</html>
