@@ -643,14 +643,14 @@ async function initGoogleMaps(){
 function tryGeolocate(map){
   if(!navigator.geolocation) return;
   navigator.geolocation.getCurrentPosition(
-    pos => { map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude}); map.setZoom(12); },
+    pos => { map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude}); map.setZoom(18); },
     () => {} // denied or unavailable — the Australia-wide default view stays as-is
   );
 }
 
 function setupMainMap(){
   mainMapInstance = new google.maps.Map(document.getElementById('mainMap'), {
-    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy'
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'satellite'
   });
   tryGeolocate(mainMapInstance);
   renderMainMapMarkers();
@@ -740,7 +740,7 @@ function registerMapPinDog(){
 
 function setupRegisterMap(){
   registerMapInstance = new google.maps.Map(document.getElementById('registerMap'), {
-    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy'
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'satellite'
   });
   tryGeolocate(registerMapInstance);
   registerMapInstance.addListener('click', (e)=>{
@@ -756,7 +756,7 @@ function setupRegisterMap(){
 
 function setupReportMap(){
   reportMapInstance = new google.maps.Map(document.getElementById('reportMap'), {
-    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy'
+    center: AU_CENTER, zoom: 4, mapId: 'DEMO_MAP_ID', gestureHandling: 'greedy', mapTypeControl: false, mapTypeId: 'satellite'
   });
   tryGeolocate(reportMapInstance);
   reportMapInstance.addListener('click', (e)=>{
