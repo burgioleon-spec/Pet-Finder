@@ -365,7 +365,6 @@ let notifiedThisSession = new Set(); // dog ids already emailed-for this browser
 async function sendScanNotification(dog){
   if(!dog.ownerEmail){ console.log('Scan notification skipped: this pet has no ownerEmail saved yet.'); return; }
   if(notifiedThisSession.has(dog.id)){ console.log('Scan notification skipped: already sent once this session for', dog.name); return; }
-  notifiedThisSession.add(dog.id);
   if(EMAILJS_PUBLIC_KEY === 'PASTE_YOUR_EMAILJS_PUBLIC_KEY'){ console.log('Scan notification skipped: EMAILJS_PUBLIC_KEY is still the placeholder value.'); return; }
   console.log('Attempting to send scan notification for', dog.name, 'to', dog.ownerEmail);
   try{
@@ -375,6 +374,7 @@ async function sendScanNotification(dog){
       scanner_info: currentUser ? currentUser.email : 'Someone not logged in',
       tag_code: dog.id
     });
+    notifiedThisSession.add(dog.id); // only marked "sent" on genuine success — a failure can be retried next lookup
     console.log('Scan notification sent successfully:', result);
   } catch(e){ console.error('Scan notification email failed:', e); }
 }
