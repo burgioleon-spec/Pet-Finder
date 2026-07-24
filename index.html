@@ -363,17 +363,20 @@ let notifiedThisSession = new Set(); // dog ids already emailed-for this browser
 // covers NFC taps, QR scans, and manually typed codes alike, since all
 // three funnel into the same lookupDog() call.
 async function sendScanNotification(dog){
-  if(!dog.ownerEmail || notifiedThisSession.has(dog.id)) return;
+  if(!dog.ownerEmail){ console.log('Scan notification skipped: this pet has no ownerEmail saved yet.'); return; }
+  if(notifiedThisSession.has(dog.id)){ console.log('Scan notification skipped: already sent once this session for', dog.name); return; }
   notifiedThisSession.add(dog.id);
-  if(EMAILJS_PUBLIC_KEY === 'PASTE_YOUR_EMAILJS_PUBLIC_KEY') return; // not configured yet
+  if(EMAILJS_PUBLIC_KEY === 'PASTE_YOUR_EMAILJS_PUBLIC_KEY'){ console.log('Scan notification skipped: EMAILJS_PUBLIC_KEY is still the placeholder value.'); return; }
+  console.log('Attempting to send scan notification for', dog.name, 'to', dog.ownerEmail);
   try{
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_SCAN_TEMPLATE_ID, {
+    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_SCAN_TEMPLATE_ID, {
       to_email: dog.ownerEmail,
       dog_name: dog.name,
       scanner_info: currentUser ? currentUser.email : 'Someone not logged in',
       tag_code: dog.id
     });
-  } catch(e){ /* silent — a failed notification shouldn't block viewing the profile */ }
+    console.log('Scan notification sent successfully:', result);
+  } catch(e){ console.error('Scan notification email failed:', e); }
 }
 
 async function markAsFound(id){
@@ -384,13 +387,17 @@ async function markAsFound(id){
     await updateDoc(doc(db, 'dogs', id), { status: 'safe' });
   } catch(e){ showBanner('Could not update: ' + e.message, 'error'); return; }
   if(dog.ownerEmail && EMAILJS_PUBLIC_KEY !== 'PASTE_YOUR_EMAILJS_PUBLIC_KEY'){
+    console.log('Attempting to send found notification for', dog.name, 'to', dog.ownerEmail);
     try{
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_FOUND_TEMPLATE_ID, {
+      const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_FOUND_TEMPLATE_ID, {
         to_email: dog.ownerEmail,
         dog_name: dog.name,
         finder_info: currentUser ? currentUser.email : 'Someone not logged in'
       });
-    } catch(e){ /* status update already succeeded either way */ }
+      console.log('Found notification sent successfully:', result);
+    } catch(e){ console.error('Found notification email failed:', e); }
+  } else {
+    console.log('Found notification skipped — ownerEmail:', dog.ownerEmail, '| EmailJS configured:', EMAILJS_PUBLIC_KEY !== 'PASTE_YOUR_EMAILJS_PUBLIC_KEY');
   }
   await loadAll();
   showBanner('Marked ' + dog.name + ' as found — thank you!', 'ok');
@@ -626,6 +633,9 @@ function renderMyDogs(){
   el.innerHTML = mine.map(d => `
     <div class="list-row">
       <div style="flex:1">
+        ${d.photoURL
+          ? `<img src="${d.photoURL}" alt="${d.name}" style="width:64px; height:64px; border-radius:50%; object-fit:cover; display:block; float:none; margin:0 0 8px 0">`
+          : `<div class="flyer-avatar" style="background:${avatarColor(d.name)}; float:none; margin:0 0 8px 0">${d.name[0].toUpperCase()}</div>`}
         <strong>${d.name}</strong> <span class="id mono">${d.id}</span> <span class="badge ${d.status}">${d.status}</span>
         <div class="muted mono" style="margin-top:2px; font-size:12px">${tagUrlFor(d.id)}</div>
         <div style="margin-top:8px; max-width:220px">
