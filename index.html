@@ -356,13 +356,24 @@ let notifiedThisSession = new Set(); // dog ids already emailed-for this browser
 async function sendScanNotification(dog){
   if(!dog.ownerEmail){ console.log('Scan notification skipped: this pet has no ownerEmail saved yet.'); return; }
   if(notifiedThisSession.has(dog.id)){ console.log('Scan notification skipped: already sent once this session for', dog.name); return; }
+
+  let locationLine = "Location: not shared (the scanner's browser didn't provide a location).";
+  try{
+    const pos = await new Promise((resolve, reject) => {
+      if(!navigator.geolocation){ reject(new Error('Geolocation not supported')); return; }
+      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+    });
+    const mapLink = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+    locationLine = `Scanned near: ${mapLink}`;
+  } catch(e){ /* permission denied, unavailable, or timed out — email still sends, just without a location */ }
+
   try{
     const scannerInfo = currentUser ? currentUser.email : 'someone not logged in';
     await addDoc(collection(db, 'mail'), {
       to: dog.ownerEmail,
       message: {
         subject: `Someone scanned ${dog.name}'s tag`,
-        text: `${scannerInfo} just scanned ${dog.name}'s tag (code: ${dog.id}).\n\nIf this wasn't you, someone found your pet's tag or QR code and looked up the profile.`
+        text: `${scannerInfo} just scanned ${dog.name}'s tag (code: ${dog.id}).\n\n${locationLine}\n\nIf this wasn't you, someone found your pet's tag or QR code and looked up the profile.`
       }
     });
     notifiedThisSession.add(dog.id); // only marked "sent" on genuine success — a failure can be retried next lookup
@@ -1489,6 +1500,11 @@ async function submitSighting(){
   if(!reportLoc){ showBanner('Click the map to drop a pin first.', 'error'); return; }
   const note=document.getElementById('sightNote').value.trim();
   try{
+    // Clear out this dog's previous sightings first — only the newest one
+    // should ever show on the map, not a trail of every report ever made.
+    const oldSnap = await getDocs(query(collection(db, 'sightings'), where('dogId', '==', dogId)));
+    await Promise.all(oldSnap.docs.map(d => deleteDoc(doc(db, 'sightings', d.id))));
+
     await addDoc(collection(db, 'sightings'), {
       dogId, lat: reportLoc.lat, lng: reportLoc.lng, note, createdAt: Date.now()
     });
