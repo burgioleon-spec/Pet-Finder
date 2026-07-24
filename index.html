@@ -387,6 +387,7 @@ async function markAsFound(id){
   if(!confirm(dog.name + ' has been found? This marks them safe and lets the owner know.')) return;
   try{
     await updateDoc(doc(db, 'dogs', id), { status: 'safe' });
+    await deleteSightingsForDog(id);
   } catch(e){ showBanner('Could not update: ' + e.message, 'error'); return; }
   if(dog.ownerEmail){
     try{
@@ -717,6 +718,13 @@ function initLocMap(id){
   });
 }
 
+// Sightings only mean anything while a dog is actually lost — clear them
+// out once a dog's marked safe, whether via the toggle or the found button.
+async function deleteSightingsForDog(dogId){
+  const snap = await getDocs(query(collection(db, 'sightings'), where('dogId', '==', dogId)));
+  await Promise.all(snap.docs.map(d => deleteDoc(doc(db, 'sightings', d.id))));
+}
+
 async function toggleStatus(id, newStatus){
   if(!ownsDog(id)){
     showBanner('You can only change status on pets registered to your own account.', 'error');
@@ -726,6 +734,7 @@ async function toggleStatus(id, newStatus){
   const name = dogs[id].name;
   try{
     await updateDoc(doc(db, 'dogs', id), { status: newStatus });
+    if(newStatus === 'safe') await deleteSightingsForDog(id);
   } catch(e){ showBanner('Could not update status: ' + e.message, 'error'); return; }
   await loadAll();
   if(newStatus === 'lost'){
